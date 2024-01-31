@@ -1,3 +1,27 @@
+//spawn multiple concealed tile icon
+const button = document.querySelector(".concealed-button");
+const concealedTiles = 13;
+for (let i = 0; i < concealedTiles; i++) {
+	const span = document.createElement("span");
+	span.classList.add("concealed-icon");
+	button.appendChild(span);
+}
+
+//switch the color of active ron type button
+// Initially set one button as active
+const buttons = document.querySelectorAll(".toggle-ronTypeButton");
+buttons.forEach((button) => {
+	button.addEventListener("click", function () {
+		buttons.forEach((btn) => btn.classList.remove("ronTypeButtonActive"));
+		this.classList.add("ronTypeButtonActive");
+	});
+});
+document.addEventListener("DOMContentLoaded", function () {
+	document.getElementById("defaultRonTypeButton").classList.add("ronTypeButtonActive");
+});
+
+//todo
+//tiles grid
 document.addEventListener("DOMContentLoaded", function () {
 	const tileContainer = document.getElementById("mahjongTiles");
 	for (let i = 0; i < 16; i++) {

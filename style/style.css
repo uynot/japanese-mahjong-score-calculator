@@ -5,6 +5,7 @@ body {
 	align-items: center;
 	height: 100vh;
 	margin: 0;
+	background-color: beige;
 }
 
 .container {
@@ -36,7 +37,139 @@ body {
 button {
 	padding: 10px 20px;
 	font-size: 16px;
+	cursor: default;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/*tile type button*/
+.concealed-button {
+	border: 2px solid #b6795d;
+	background-color: transparent;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px 10px 10px 10px;
 	cursor: pointer;
+	outline: none;
+}
+
+.open-button {
+	border: 2px solid #b6795d;
+	background-color: transparent;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+	outline: none;
+}
+
+.concealedQuad-button {
+	border: 2px solid #b6795d;
+	background-color: transparent;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+	outline: none;
+}
+
+.openQuad-button {
+	border: 2px solid #b6795d;
+	background-color: transparent;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+	outline: none;
+}
+
+.concealed-icon {
+	width: 20px;
+	height: 25px;
+	border-radius: 3px;
+	background-color: #b6795d;
+	margin: 0.5px;
+}
+
+.openTriplet-icon {
+	width: 20px;
+	height: 25px;
+	border-radius: 3px;
+	background-color: #d1a691;
+	margin: 0px 2px;
+}
+
+.openTripletFromOpponent-icon {
+	width: 25px;
+	height: 20px;
+	border-radius: 3px;
+	background-color: #d1a691;
+	margin: 5px -0.5px 0px -0.5px;
+	bottom: 0;
+}
+
+.openQuadFromOpponent-icon {
+	width: 25px;
+	height: 20px;
+	border-radius: 3px;
+	background-color: #d1a691;
+	margin: 5px 0.5px 0px 3px;
+	bottom: 0;
+}
+.openQuad-icon {
+	width: 20px;
+	height: 25px;
+	border-radius: 3px;
+	background-color: #d1a691;
+	margin: 0.5px;
+	bottom: 0;
+}
+.concealedQuad-icon {
+	width: 20px;
+	height: 25px;
+	border-radius: 3px;
+	background-color: #b6795d;
+	margin: 0.5px;
+	bottom: 0;
+}
+
+.faceUpconcealedQuad-icon {
+	width: 20px;
+	height: 25px;
+	border-radius: 3px;
+	background-color: #d1a691;
+	margin: 0.5px;
+	bottom: 0;
+}
+
+/* todo */
+/* color transform animation when hover */
+.concealed-button:hover {
+	background-color: #b6795d;
+}
+
+/* todo */
+/* click to smaller the tile size and restore */
+.concealed-button:active {
+	background-color: #d1a691;
+}
+
+.ronTypeButtonActive {
+	background-color: #b6795d;
+}
+
+.ronTypeButtonActive .concealed-icon {
+	background-color: beige;
 }
 
 /* Responsive adjustments */
