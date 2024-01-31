@@ -7,12 +7,35 @@
 		<link rel="stylesheet" href="style/style.css" />
 	</head>
 	<body>
+		<button id="defaultRonTypeButton" class="concealed-button toggle-ronTypeButton" onclick="console.log('TEST: concealed')">
+			<!-- tile span spawn by js -->
+		</button>
+		<button class="open-button toggle-ronTypeButton" onclick="console.log('TEST: open')">
+			<span class="openTriplet-icon"></span>
+			<span class="openTripletFromOpponent-icon"></span>
+			<span class="openTriplet-icon"></span>
+		</button>
+		<button class="openQuad-button toggle-ronTypeButton" onclick="console.log('TEST: open quad')">
+			<span class="openQuadFromOpponent-icon"></span>
+			<span class="openQuad-icon"></span>
+			<span class="openQuad-icon"></span>
+			<span class="openQuad-icon"></span>
+		</button>
+		<button class="concealedQuad-button toggle-ronTypeButton" onclick="console.log('TEST: concealed quad')">
+			<span class="concealedQuad-icon"></span>
+			<span class="faceUpconcealedQuad-icon"></span>
+			<span class="faceUpconcealedQuad-icon"></span>
+			<span class="concealedQuad-icon"></span>
+		</button>
+
 		<div class="container">
 			<div id="mahjongTiles" class="tiles">
 				<!-- Mahjong tiles area-->
 			</div>
 			<button id="calculateScore">Calculate Score</button>
 		</div>
+
+		<!-- Javascript -->
 		<script src="js/script.js"></script>
 	</body>
 </html>
