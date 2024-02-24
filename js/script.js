@@ -1,3 +1,15 @@
+//global var
+
+//verify tile type
+function isValidType(type) {
+	return tilesTypes.includes(type);
+}
+
+//verify kaze type
+function isValidKaze(kaze) {
+	return kazeTypes.includes(kaze);
+}
+
 //spawn multiple concealed tile icon
 const button = document.querySelector(".concealed-button");
 const tileAmount = 13;
@@ -7,17 +19,43 @@ for (let i = 0; i < tileAmount; i++) {
 	button.appendChild(span);
 }
 
-//switch the color of active ron type button
+//switch the color of active tile type button
 // Initially set one button as active
-const buttons = document.querySelectorAll(".toggle-ronTypeButton");
+const buttons = document.querySelectorAll(".toggle-tileType");
 buttons.forEach((button) => {
 	button.addEventListener("click", function () {
-		buttons.forEach((btn) => btn.classList.remove("ronTypeButtonActive"));
-		this.classList.add("ronTypeButtonActive");
+		buttons.forEach((btn) => btn.classList.remove("activeTileType"));
+		this.classList.add("activeTileType");
 	});
 });
 document.addEventListener("DOMContentLoaded", function () {
-	document.getElementById("defaultRonTypeButton").classList.add("ronTypeButtonActive");
+	document.getElementById("defaultTileType").classList.add("activeTileType");
+});
+
+//switch the color of active table wind type
+// Initially set ton wind as active table wind
+const tableWinds = document.querySelectorAll(".toggle-tableWind");
+tableWinds.forEach((wind) => {
+	wind.addEventListener("click", function () {
+		tableWinds.forEach((w) => w.classList.remove("activeTableWind"));
+		this.classList.add("activeTableWind");
+	});
+});
+document.addEventListener("DOMContentLoaded", function () {
+	document.getElementById("defaultTableWind").classList.add("activeTableWind");
+});
+
+//switch the color of active player wind type
+// Initially set ton wind as active player wind
+const playerWinds = document.querySelectorAll(".toggle-playerWind");
+playerWinds.forEach((wind) => {
+	wind.addEventListener("click", function () {
+		playerWinds.forEach((w) => w.classList.remove("activePlayerWind"));
+		this.classList.add("activePlayerWind");
+	});
+});
+document.addEventListener("DOMContentLoaded", function () {
+	document.getElementById("defaultPlayerWind").classList.add("activePlayerWind");
 });
 
 //todo
