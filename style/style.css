@@ -6,12 +6,100 @@ body {
 	height: 100vh;
 	margin: 0;
 	background-color: beige;
+	overflow: hidden;
+	font-family: "Kanteiryu", sans-serif;
 }
 
 .container {
 	text-align: center;
 }
 
+.flex-container {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	border: 2px solid black;
+	margin: 10px;
+	width: 1000px;
+}
+
+.flex-item {
+	border: 2px solid black;
+	margin: 10px;
+	flex-grow: 1;
+}
+
+.flex-item-displayBar {
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-item-tilesGrid {
+	flex-grow: 4;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-item-ronTypes {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-item-tileTypes {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+}
+
+.flex-item-kaze {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-item-tableWind,
+.flex-item-playerWind {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px;
+	margin-left: 80px;
+	margin-right: 80px;
+}
+
+.flex-item-calculateBtn {
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.label-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* This centers the label above the tile set */
+	margin: 10px; /* Provides spacing around the entire set */
+}
+
+.label-tableWind,
+.label-playerWind {
+	font-size: 16px;
+	color: #b6795d;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 80px;
+	margin-right: 80px;
+	margin-bottom: -10px;
+}
+
+/*todo*/
 .tiles {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
@@ -19,17 +107,50 @@ body {
 	margin-bottom: 20px;
 }
 
+/*tiles Grid*/
+/*todo*/
 .tile {
-	width: 60px;
-	height: 80px;
-	background-color: #f0f0f0;
-	border: 1px solid #ddd;
+	width: 20px;
+	height: 30px;
+	padding: 10px;
+	background-color: #ffffff;
+	border: 2px solid #ddd;
+	border-radius: 7px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	/*pointer-events: none;*/
 }
 
+.tileImg {
+	scale: 9%;
+}
+
+.kazeTile {
+	width: 20px;
+	height: 30px;
+	padding: 10px;
+	background-color: #ffffff;
+	border: 2px solid #ddd;
+	border-radius: 7px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	/*pointer-events: none;*/
+	margin: 5px;
+}
+
+/*todo*/
 .tile.selected {
 	background-color: #bada55;
 }
@@ -55,6 +176,8 @@ button {
 	padding: 10px 10px 10px 10px;
 	cursor: pointer;
 	outline: none;
+	height: 50px;
+	margin: 0px 10px 0px 10px;
 }
 
 .open-button {
@@ -67,6 +190,8 @@ button {
 	padding: 10px;
 	cursor: pointer;
 	outline: none;
+	height: 50px;
+	margin: 0px 10px 0px 10px;
 }
 
 .concealedQuad-button {
@@ -79,6 +204,8 @@ button {
 	padding: 10px;
 	cursor: pointer;
 	outline: none;
+	height: 50px;
+	margin: 0px 10px 0px 10px;
 }
 
 .openQuad-button {
@@ -91,6 +218,8 @@ button {
 	padding: 10px;
 	cursor: pointer;
 	outline: none;
+	height: 50px;
+	margin: 0px 10px 0px 10px;
 }
 
 .concealed-icon {
@@ -164,36 +293,51 @@ button {
 	/* background-color: #d1a691; */
 }
 
-.ronTypeButtonActive {
+.activeTileType {
 	background-color: #b6795d;
 }
 
-.ronTypeButtonActive .concealed-icon {
+.activeTileType .concealed-icon {
 	background-color: beige;
 }
 
-.ronTypeButtonActive .openTripletFromOpponent-icon {
+.activeTileType .openTripletFromOpponent-icon {
 	background-color: beige;
 }
 
-.ronTypeButtonActive .openTriplet-icon {
+.activeTileType .openTriplet-icon {
 	background-color: beige;
 }
 
-.ronTypeButtonActive .openQuad-icon {
+.activeTileType .openQuad-icon {
 	background-color: beige;
 }
 
-.ronTypeButtonActive .openQuadFromOpponent-icon {
+.activeTileType .openQuadFromOpponent-icon {
 	background-color: beige;
 }
 
-.ronTypeButtonActive .concealedQuad-icon {
+.activeTileType .concealedQuad-icon {
 	background-color: #d1a691;
 }
 
-.ronTypeButtonActive .faceUpconcealedQuad-icon {
+.activeTileType .faceUpconcealedQuad-icon {
 	background-color: beige;
+}
+
+.activeTableWind {
+	background-color: rgb(176, 203, 224);
+}
+
+.activePlayerWind {
+	background-color: rgb(176, 203, 224);
+}
+
+@font-face {
+	font-family: "Kanteiryu";
+	src: url("/font/ipag.ttf") format("woff2");
+	font-weight: normal;
+	font-style: normal;
 }
 
 /* Responsive adjustments */
