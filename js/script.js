@@ -1,7 +1,7 @@
 //spawn multiple concealed tile icon
 const button = document.querySelector(".concealed-button");
-const concealedTiles = 13;
-for (let i = 0; i < concealedTiles; i++) {
+const tileAmount = 13;
+for (let i = 0; i < tileAmount; i++) {
 	const span = document.createElement("span");
 	span.classList.add("concealed-icon");
 	button.appendChild(span);
