@@ -10,7 +10,7 @@ function isValidKaze(kaze) {
 	return kazeTypes.includes(kaze);
 }
 
-//spawn multiple concealed tile icon
+//spawn multiple concealed tile as button icon
 const button = document.querySelector(".concealed-button");
 const tileAmount = 13;
 for (let i = 0; i < tileAmount; i++) {
@@ -61,20 +61,57 @@ document.addEventListener("DOMContentLoaded", function () {
 //todo
 //tiles grid
 document.addEventListener("DOMContentLoaded", function () {
-	const tileContainer = document.getElementById("mahjongTiles");
-	for (let i = 0; i < 16; i++) {
-		// Adjust the number of tiles as needed
-		const tile = document.createElement("div");
-		tile.classList.add("tile");
-		tile.innerText = i + 1; // Placeholder for tile number
-		tile.addEventListener("click", function () {
-			this.classList.toggle("selected");
-		});
-		tileContainer.appendChild(tile);
+	const grid9x3 = document.querySelector(".dora-tile-grid");
+	const tileTypes = ["man", "sou", "pin", "character"];
+	const typeCounts = [9, 9, 9, 7]; // Number of tiles for each type
+
+	function countSelectedTiles() {
+		return document.querySelectorAll(".tile.selected").length;
 	}
 
+	tileTypes.forEach((type, index) => {
+		const count = typeCounts[index]; // Get the count for this type
+		const container = count === 3 ? grid7x1 : grid9x3; // Choose the container based on count
+		for (let i = 1; i <= count; i++) {
+			const tile = document.createElement("div");
+			tile.classList.add("tile");
+			tile.setAttribute("data-tile-type", `${type}${i}`); // Set the data attribute for tile type and number
+			tile.style.backgroundImage = `url('/img/light/${type}${i}.svg')`; // Set the background image path
+			tile.addEventListener("click", function () {
+				if (this.classList.contains("selected")) {
+					this.classList.remove("selected");
+				} else {
+					if (countSelectedTiles() < 8) {
+						this.classList.add("selected");
+					} else {
+						showPopupMessage("test hah");
+					}
+				}
+			});
+			container.appendChild(tile);
+		}
+	});
+});
+
+function showPopupMessage(text) {
+	var popupMessage = document.getElementById("popupMessage");
+	var messageText = popupMessage.querySelector(".popupMessageText");
+
+	messageText.textContent = text ? text : "Error occurred";
+	popupMessage.classList.add("popup-show");
+
+	// Remove the popup after the animations complete (3 seconds total)
+	setTimeout(function () {
+		popupMessage.classList.remove("popup-show");
+	}, 3000);
+}
+
+//	todo
+//Calculate Button
+document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("calculateScore").addEventListener("click", function () {
 		// Logic to calculate the score
 		console.log("Calculate score for selected tiles");
+		showPopupMessage("incomplete func");
 	});
 });

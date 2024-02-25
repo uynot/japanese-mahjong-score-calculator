@@ -83,8 +83,9 @@ body {
 .label-container {
 	display: flex;
 	flex-direction: column;
-	align-items: center; /* This centers the label above the tile set */
-	margin: 10px; /* Provides spacing around the entire set */
+	align-items: center;
+	margin: 10px;
+	user-select: none;
 }
 
 .label-tableWind,
@@ -101,10 +102,6 @@ body {
 
 /*todo*/
 .tiles {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
-	gap: 10px;
-	margin-bottom: 20px;
 }
 
 /*tiles Grid*/
@@ -125,10 +122,25 @@ body {
 	-ms-user-select: none;
 	user-select: none;
 	/*pointer-events: none;*/
+	background-size: 80%; /* or 'cover' depending on your needs */
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .tileImg {
-	scale: 9%;
+	scale: 10%;
+}
+
+.tile-grid {
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	gap: 10px;
+}
+
+.dora-tile-grid {
+	display: grid;
+	grid-template-columns: repeat(9, 1fr);
+	gap: 10px;
 }
 
 .kazeTile {
@@ -333,6 +345,53 @@ button {
 	background-color: rgb(176, 203, 224);
 }
 
+.popup-message {
+	background-color: rgba(51, 51, 51, 1);
+	color: #fff;
+	opacity: 0;
+	width: 20%;
+	text-align: center;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	top: -50px;
+	border-radius: 10px;
+	user-select: none;
+}
+
+.popup-message p,
+.popup-message h1,
+.popup-message h2 {
+	color: rgba(255, 255, 255, 1);
+	opacity: 1;
+}
+
+@keyframes slideIn {
+	from {
+		top: -50px;
+		opacity: 0;
+	}
+	to {
+		top: 50%;
+		opacity: 1;
+	}
+}
+
+@keyframes slideOut {
+	from {
+		top: 50%;
+		opacity: 1;
+	}
+	to {
+		top: -50px;
+		opacity: 0;
+	}
+}
+
+.popup-show {
+	animation: slideIn 0.5s forwards, slideOut 0.5s 2s forwards;
+}
+
 @font-face {
 	font-family: "Kanteiryu";
 	src: url("/font/ipag.ttf") format("woff2");
@@ -341,7 +400,7 @@ button {
 }
 
 /* Responsive adjustments */
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
 	.tiles {
 		grid-template-columns: repeat(2, 1fr);
 	}
@@ -350,4 +409,4 @@ button {
 		width: 50px;
 		height: 70px;
 	}
-}
+} */
