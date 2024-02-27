@@ -129,17 +129,12 @@ body {
 
 .tileImg {
 	scale: 10%;
+	background: transparent;
 }
 
 .tile-grid {
 	display: grid;
 	grid-template-columns: repeat(10, 1fr);
-	gap: 10px;
-}
-
-.dora-tile-grid {
-	display: grid;
-	grid-template-columns: repeat(9, 1fr);
 	gap: 10px;
 }
 
@@ -346,7 +341,7 @@ button {
 }
 
 .popup-message {
-	background-color: rgba(51, 51, 51, 1);
+	background-color: rgb(245, 112, 112);
 	color: #fff;
 	opacity: 0;
 	width: 20%;

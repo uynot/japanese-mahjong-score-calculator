@@ -11,12 +11,12 @@ function isValidKaze(kaze) {
 }
 
 //spawn multiple concealed tile as button icon
-const button = document.querySelector(".concealed-button");
+const concealedBtn = document.querySelector(".concealed-button");
 const tileAmount = 13;
 for (let i = 0; i < tileAmount; i++) {
 	const span = document.createElement("span");
 	span.classList.add("concealed-icon");
-	button.appendChild(span);
+	concealedBtn.appendChild(span);
 }
 
 //switch the color of active tile type button
@@ -61,23 +61,33 @@ document.addEventListener("DOMContentLoaded", function () {
 //todo
 //tiles grid
 document.addEventListener("DOMContentLoaded", function () {
-	const grid9x3 = document.querySelector(".dora-tile-grid");
+	const grid = document.querySelector(".tile-grid");
 	const tileTypes = ["man", "sou", "pin", "character"];
-	const typeCounts = [9, 9, 9, 7]; // Number of tiles for each type
-
-	function countSelectedTiles() {
-		return document.querySelectorAll(".tile.selected").length;
-	}
+	const typeCounts = [9, 9, 9, 7];
 
 	tileTypes.forEach((type, index) => {
-		const count = typeCounts[index]; // Get the count for this type
-		const container = count === 3 ? grid7x1 : grid9x3; // Choose the container based on count
+		const count = typeCounts[index];
 		for (let i = 1; i <= count; i++) {
+			let tileType = `${type}${i}`;
+
 			const tile = document.createElement("div");
 			tile.classList.add("tile");
-			tile.setAttribute("data-tile-type", `${type}${i}`); // Set the data attribute for tile type and number
-			tile.style.backgroundImage = `url('/img/light/${type}${i}.svg')`; // Set the background image path
-			tile.addEventListener("click", function () {
+			tile.setAttribute("data-tile-type", tileType);
+			tile.style.backgroundImage = `url('/img/light/${tileType}.svg')`;
+			grid.appendChild(tile);
+
+			if (i === 5 && type != "character") {
+				// add red 5 pin/man/sou
+				tileType = `${type}5r`;
+				const redTile = document.createElement("div");
+				redTile.classList.add("tile");
+				redTile.setAttribute("data-tile-type", tileType);
+				redTile.style.backgroundImage = `url('/img/light/${tileType}.svg')`;
+				grid.appendChild(redTile);
+			}
+			//todo
+			// revamp - change to click => show in upper area instead of selection
+			/*tile.addEventListener("click", function () {
 				if (this.classList.contains("selected")) {
 					this.classList.remove("selected");
 				} else {
@@ -87,8 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						showPopupMessage("test hah");
 					}
 				}
-			});
-			container.appendChild(tile);
+			});*/
 		}
 	});
 });
@@ -100,17 +109,18 @@ function showPopupMessage(text) {
 	messageText.textContent = text ? text : "Error occurred";
 	popupMessage.classList.add("popup-show");
 
-	// Remove the popup after the animations complete (3 seconds total)
+	// remove the popup after the animations complete (3 seconds total)
 	setTimeout(function () {
 		popupMessage.classList.remove("popup-show");
 	}, 3000);
 }
 
-//	todo
+//todo
 //Calculate Button
 document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("calculateScore").addEventListener("click", function () {
-		// Logic to calculate the score
+		// todo
+		// logic to calculate the score
 		console.log("Calculate score for selected tiles");
 		showPopupMessage("incomplete func");
 	});
