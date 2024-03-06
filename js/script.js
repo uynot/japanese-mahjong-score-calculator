@@ -1,5 +1,15 @@
 //global var
+/*
+	todo - tiles icon amount depends on this global variable
+*/
+var chiPon = [
+	[1, 2, 3],
+	[2, 3, 4],
+];
+var kan = [];
+var ankan = [];
 
+/*
 //verify tile type
 function isValidType(type) {
 	return tilesTypes.includes(type);
@@ -8,19 +18,40 @@ function isValidType(type) {
 //verify kaze type
 function isValidKaze(kaze) {
 	return kazeTypes.includes(kaze);
-}
+}*/
 
 //spawn multiple concealed tile as button icon
-const button = document.querySelector(".concealed-button");
-const tileAmount = 13;
-for (let i = 0; i < tileAmount; i++) {
-	const span = document.createElement("span");
-	span.classList.add("concealed-icon");
-	button.appendChild(span);
+function generateBtnIcon() {
+	const concealedBtn = document.querySelector(".concealed-button");
+	var tileAmount = 13;
+	var chiPonTiles = !chiPon ? 0 : chiPon.length * 3;
+	console.log("chiPonTiles: " + chiPonTiles);
+	var kanTiles = !kan ? 0 : kan.length * 3; // count 4 as 3
+	console.log("kanTiles: " + kanTiles);
+	var ankanTiles = !ankan ? 0 : ankan.length * 3; // count 4 as 3
+	console.log("ankanTiles: " + ankanTiles);
+	var revealedTiles = tileAmount - chiPonTiles - kanTiles - ankanTiles;
+	for (let i = 0; i < revealedTiles; i++) {
+		const span = document.createElement("span");
+		span.classList.add("concealed-icon");
+		concealedBtn.appendChild(span);
+	}
+	const tenpaiBtn = document.querySelector(".tenpai-button");
+	for (let i = 0; i < revealedTiles; i++) {
+		const span = document.createElement("span");
+		span.classList.add("tenpaiHand-icon");
+		tenpaiBtn.appendChild(span);
+		if (i === revealedTiles - 1) {
+			const lastSpan = document.createElement("span");
+			lastSpan.classList.add("tenpai-icon");
+			tenpaiBtn.appendChild(lastSpan);
+		}
+	}
 }
+generateBtnIcon();
 
 //switch the color of active tile type button
-// Initially set one button as active
+//initially set one button as active
 const buttons = document.querySelectorAll(".toggle-tileType");
 buttons.forEach((button) => {
 	button.addEventListener("click", function () {
@@ -33,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //switch the color of active table wind type
-// Initially set ton wind as active table wind
+//initially set ton wind as active table wind
 const tableWinds = document.querySelectorAll(".toggle-tableWind");
 tableWinds.forEach((wind) => {
 	wind.addEventListener("click", function () {
@@ -46,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //switch the color of active player wind type
-// Initially set ton wind as active player wind
+//initially set ton wind as active player wind
 const playerWinds = document.querySelectorAll(".toggle-playerWind");
 playerWinds.forEach((wind) => {
 	wind.addEventListener("click", function () {
@@ -59,25 +90,49 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //todo
+//tsumo button event
+document.getElementById("tsumoToggle").addEventListener("change", function () {
+	const tsumoLabel = document.querySelector(".label-tsumo");
+
+	if (this.checked) {
+		//tsumoLabel.textContent = "Tsumo On";
+		console.log("Tsumo: Yes");
+	} else {
+		//tsumoLabel.textContent = "Tsumo Off";
+		console.log("Tsumo: No");
+	}
+});
+
+//todo
 //tiles grid
 document.addEventListener("DOMContentLoaded", function () {
-	const grid9x3 = document.querySelector(".dora-tile-grid");
+	const grid = document.querySelector(".tile-grid");
 	const tileTypes = ["man", "sou", "pin", "character"];
-	const typeCounts = [9, 9, 9, 7]; // Number of tiles for each type
-
-	function countSelectedTiles() {
-		return document.querySelectorAll(".tile.selected").length;
-	}
+	const typeCounts = [9, 9, 9, 7];
 
 	tileTypes.forEach((type, index) => {
-		const count = typeCounts[index]; // Get the count for this type
-		const container = count === 3 ? grid7x1 : grid9x3; // Choose the container based on count
+		const count = typeCounts[index];
 		for (let i = 1; i <= count; i++) {
+			let tileType = `${type}${i}`;
+
 			const tile = document.createElement("div");
 			tile.classList.add("tile");
-			tile.setAttribute("data-tile-type", `${type}${i}`); // Set the data attribute for tile type and number
-			tile.style.backgroundImage = `url('/img/light/${type}${i}.svg')`; // Set the background image path
-			tile.addEventListener("click", function () {
+			tile.setAttribute("data-tile-type", tileType);
+			tile.style.backgroundImage = `url('/img/light/${tileType}.svg')`;
+			grid.appendChild(tile);
+
+			if (i === 5 && type != "character") {
+				// add red 5 pin/man/sou
+				tileType = `${type}5r`;
+				const redTile = document.createElement("div");
+				redTile.classList.add("tile");
+				redTile.setAttribute("data-tile-type", tileType);
+				redTile.style.backgroundImage = `url('/img/light/${tileType}.svg')`;
+				grid.appendChild(redTile);
+			}
+			//todo
+			// revamp - change to click => show in upper area instead of selection
+			/*tile.addEventListener("click", function () {
 				if (this.classList.contains("selected")) {
 					this.classList.remove("selected");
 				} else {
@@ -87,8 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						showPopupMessage("test hah");
 					}
 				}
-			});
-			container.appendChild(tile);
+			});*/
 		}
 	});
 });
@@ -100,17 +154,18 @@ function showPopupMessage(text) {
 	messageText.textContent = text ? text : "Error occurred";
 	popupMessage.classList.add("popup-show");
 
-	// Remove the popup after the animations complete (3 seconds total)
+	// remove the popup after the animations complete (3 seconds total)
 	setTimeout(function () {
 		popupMessage.classList.remove("popup-show");
 	}, 3000);
 }
 
-//	todo
+//todo
 //Calculate Button
 document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("calculateScore").addEventListener("click", function () {
-		// Logic to calculate the score
+		// todo
+		// logic to calculate the score
 		console.log("Calculate score for selected tiles");
 		showPopupMessage("incomplete func");
 	});

@@ -11,8 +11,7 @@
 	<body>
 		<!-- dialog --><!-- todo -->
 		<div id="popupMessage" class="popup-message">
-				<p class="popupMessageText"></p>
-			</div>
+			<p class="popupMessageText"></p>
 		</div>
 
 		<div class="flex-container">
@@ -26,17 +25,7 @@
 			<div class="flex-item flex-item-tilesGrid">
 				<div id="mahjongTiles" class="">
 					<div class="">
-						<div class="grid-9x3">
-							<!-- tiles will be here -->
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="flex-item flex-item-tilesGrid">
-				<div id="mahjongTiles" class="">
-					<div class="">
-						<div class="dora-tile-grid">
+						<div class="tile-grid">
 							<!-- tiles will be here -->
 						</div>
 					</div>
@@ -45,61 +34,112 @@
 
 			<div class="flex-item-ronTypes">
 				<div class="flex-item-tileTypes">
-					<button id="defaultTileType" class="concealed-button toggle-tileType" onclick="console.log('TEST: concealed')">
-						<!-- tile span spawn by js -->
-					</button>
-					<button class="open-button toggle-tileType" onclick="console.log('TEST: open')">
-						<span class="openTriplet-icon"></span>
-						<span class="openTripletFromOpponent-icon"></span>
-						<span class="openTriplet-icon"></span>
-					</button>
-					<button class="openQuad-button toggle-tileType" onclick="console.log('TEST: open quad')">
-						<span class="openQuadFromOpponent-icon"></span>
-						<span class="openQuad-icon"></span>
-						<span class="openQuad-icon"></span>
-						<span class="openQuad-icon"></span>
-					</button>
-					<button class="concealedQuad-button toggle-tileType" onclick="console.log('TEST: concealed quad')">
-						<span class="concealedQuad-icon"></span>
-						<span class="faceUpconcealedQuad-icon"></span>
-						<span class="faceUpconcealedQuad-icon"></span>
-						<span class="concealedQuad-icon"></span>
-					</button>
-				</div>
+					<div class="flex-item-handTenpei">
+						<div class="label-container">
+							<span class="label-concealed">Hand</span>
+							<!--
+							todo - write javascript to generate icons depends on how many tiles left : 13 - chi/pon - kan - ankan = (?)
+						-->
+							<button id="defaultTileType" class="concealed-button toggle-tileType" onclick="console.log('TEST: concealed')">
+								<!-- tile span spawn by js -->
+							</button>
+						</div>
+						<!--
+						todo - dora and tenpai
+					-->
+						<div class="label-container">
+							<span class="label-concealed">Dora</span>
+							<button class="dora-button toggle-tileType" onclick="console.log('TEST: dora')">
+								<!--
+								todo - dora tile icon
+							-->
+								<span class="dora-icon"></span>
+								<span class="dora-icon"></span>
+								<span class="revealedDora-icon"></span>
+								<span class="dora-icon"></span>
+								<span class="dora-icon"></span>
+								<span class="dora-icon"></span>
+								<span class="dora-icon"></span>
+							</button>
+						</div>
+						<div class="label-container">
+							<span class="label-concealed">Ron Tile</span>
+							<button class="tenpai-button toggle-tileType" onclick="console.log('TEST: dora')">
+								<!-- todo - write javascript to generate icons depends on how many tiles left : 13 - chi/pon - kan - ankan = (?) -->
+							</button>
+						</div>
+						<div class="label-container">
+							<span class="label-tsumo">Tsumo</span>
+							<label class="switch">
+								<!-- todo - tsumo button event -->
+								<input type="checkbox" id="tsumoToggle" />
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+					<div class="flex-item-chiPonKan">
+						<div class="label-container">
+							<span class="label-concealed">Chi/Pon</span>
+							<button class="open-button toggle-tileType" onclick="console.log('TEST: open')">
+								<span class="openTripletFromOpponent-icon"></span>
+								<span class="openTriplet-icon"></span>
+								<span class="openTriplet-icon"></span>
+							</button>
+						</div>
+						<div class="label-container">
+							<span class="label-concealed">Kan</span>
+							<button class="openQuad-button toggle-tileType" onclick="console.log('TEST: open quad')">
+								<span class="openQuadFromOpponent-icon"></span>
+								<span class="openQuad-icon"></span>
+								<span class="openQuad-icon"></span>
+								<span class="openQuad-icon"></span>
+							</button>
+						</div>
+						<div class="label-container">
+							<span class="label-concealed">Ankan</span>
+							<button class="concealedQuad-button toggle-tileType" onclick="console.log('TEST: concealed quad')">
+								<span class="concealedQuad-icon"></span>
+								<span class="faceUpConcealedQuad-icon"></span>
+								<span class="faceUpConcealedQuad-icon"></span>
+								<span class="concealedQuad-icon"></span>
+							</button>
+						</div>
+					</div>
 
-				<div class="flex-item-kaze">
-					<div class="label-container">
-						<span class="label-tableWind">---Prevailing Wind---</span>
-						<div class="flex-item-tableWind">
-							<div id="defaultTableWind" class="kazeTile toggle-tableWind">
-								<img src="img/light/character1.svg" class="tileImg" draggable="false" />
-							</div>
-							<div class="kazeTile toggle-tableWind">
-								<img src="img/light/character2.svg" class="tileImg" draggable="false" />
-							</div>
-							<!-- <div class="kazeTile toggle-tableWind">
+					<div class="flex-item-kaze">
+						<div class="label-container">
+							<span class="label-tableWind">Prevailing Wind</span>
+							<div class="flex-item-tableWind">
+								<div id="defaultTableWind" class="kazeTile toggle-tableWind">
+									<img src="img/light/character1.svg" class="tileImg" draggable="false" />
+								</div>
+								<div class="kazeTile toggle-tableWind">
+									<img src="img/light/character2.svg" class="tileImg" draggable="false" />
+								</div>
+								<!-- <div class="kazeTile toggle-tableWind">
 								<img src="img/light/Shaa.svg" class="tileImg" draggable="false" />
 							</div>
 							<div class="kazeTile toggle-tableWind">
 								<img src="img/light/Pei.svg" class="tileImg" draggable="false" />
 							</div> -->
+							</div>
 						</div>
-					</div>
 
-					<div class="label-container">
-						<span class="label-playerWind">---Seat Wind---</span>
-						<div class="flex-item-playerWind">
-							<div id="defaultPlayerWind" class="kazeTile toggle-playerWind">
-								<img src="img/light/character1.svg" class="tileImg" draggable="false" />
-							</div>
-							<div class="kazeTile toggle-playerWind">
-								<img src="img/light/character2.svg" class="tileImg" draggable="false" />
-							</div>
-							<div class="kazeTile toggle-playerWind">
-								<img src="img/light/character3.svg" class="tileImg" draggable="false" />
-							</div>
-							<div class="kazeTile toggle-playerWind">
-								<img src="img/light/character4.svg" class="tileImg" draggable="false" />
+						<div class="label-container">
+							<span class="label-playerWind">Seat Wind</span>
+							<div class="flex-item-playerWind">
+								<div id="defaultPlayerWind" class="kazeTile toggle-playerWind">
+									<img src="img/light/character1.svg" class="tileImg" draggable="false" />
+								</div>
+								<div class="kazeTile toggle-playerWind">
+									<img src="img/light/character2.svg" class="tileImg" draggable="false" />
+								</div>
+								<div class="kazeTile toggle-playerWind">
+									<img src="img/light/character3.svg" class="tileImg" draggable="false" />
+								</div>
+								<div class="kazeTile toggle-playerWind">
+									<img src="img/light/character4.svg" class="tileImg" draggable="false" />
+								</div>
 							</div>
 						</div>
 					</div>
