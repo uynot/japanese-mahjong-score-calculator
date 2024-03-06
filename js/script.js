@@ -1,5 +1,15 @@
 //global var
+/*
+	todo - tiles icon amount depends on this global variable
+*/
+var chiPon = [
+	[1, 2, 3],
+	[2, 3, 4],
+];
+var kan = [];
+var ankan = [];
 
+/*
 //verify tile type
 function isValidType(type) {
 	return tilesTypes.includes(type);
@@ -8,19 +18,40 @@ function isValidType(type) {
 //verify kaze type
 function isValidKaze(kaze) {
 	return kazeTypes.includes(kaze);
-}
+}*/
 
 //spawn multiple concealed tile as button icon
-const concealedBtn = document.querySelector(".concealed-button");
-const tileAmount = 13;
-for (let i = 0; i < tileAmount; i++) {
-	const span = document.createElement("span");
-	span.classList.add("concealed-icon");
-	concealedBtn.appendChild(span);
+function generateBtnIcon() {
+	const concealedBtn = document.querySelector(".concealed-button");
+	var tileAmount = 13;
+	var chiPonTiles = !chiPon ? 0 : chiPon.length * 3;
+	console.log("chiPonTiles: " + chiPonTiles);
+	var kanTiles = !kan ? 0 : kan.length * 3; // count 4 as 3
+	console.log("kanTiles: " + kanTiles);
+	var ankanTiles = !ankan ? 0 : ankan.length * 3; // count 4 as 3
+	console.log("ankanTiles: " + ankanTiles);
+	var revealedTiles = tileAmount - chiPonTiles - kanTiles - ankanTiles;
+	for (let i = 0; i < revealedTiles; i++) {
+		const span = document.createElement("span");
+		span.classList.add("concealed-icon");
+		concealedBtn.appendChild(span);
+	}
+	const tenpaiBtn = document.querySelector(".tenpai-button");
+	for (let i = 0; i < revealedTiles; i++) {
+		const span = document.createElement("span");
+		span.classList.add("tenpaiHand-icon");
+		tenpaiBtn.appendChild(span);
+		if (i === revealedTiles - 1) {
+			const lastSpan = document.createElement("span");
+			lastSpan.classList.add("tenpai-icon");
+			tenpaiBtn.appendChild(lastSpan);
+		}
+	}
 }
+generateBtnIcon();
 
 //switch the color of active tile type button
-// Initially set one button as active
+//initially set one button as active
 const buttons = document.querySelectorAll(".toggle-tileType");
 buttons.forEach((button) => {
 	button.addEventListener("click", function () {
@@ -33,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //switch the color of active table wind type
-// Initially set ton wind as active table wind
+//initially set ton wind as active table wind
 const tableWinds = document.querySelectorAll(".toggle-tableWind");
 tableWinds.forEach((wind) => {
 	wind.addEventListener("click", function () {
@@ -46,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //switch the color of active player wind type
-// Initially set ton wind as active player wind
+//initially set ton wind as active player wind
 const playerWinds = document.querySelectorAll(".toggle-playerWind");
 playerWinds.forEach((wind) => {
 	wind.addEventListener("click", function () {
@@ -56,6 +87,20 @@ playerWinds.forEach((wind) => {
 });
 document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("defaultPlayerWind").classList.add("activePlayerWind");
+});
+
+//todo
+//tsumo button event
+document.getElementById("tsumoToggle").addEventListener("change", function () {
+	const tsumoLabel = document.querySelector(".label-tsumo");
+
+	if (this.checked) {
+		//tsumoLabel.textContent = "Tsumo On";
+		console.log("Tsumo: Yes");
+	} else {
+		//tsumoLabel.textContent = "Tsumo Off";
+		console.log("Tsumo: No");
+	}
 });
 
 //todo

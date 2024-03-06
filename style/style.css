@@ -52,9 +52,26 @@ body {
 
 .flex-item-tileTypes {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 	margin: 10px;
+}
+
+.flex-item-handTenpei {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-item-chiPonKan {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin-left: 100%;
+	margin-right: 100%;
 }
 
 .flex-item-kaze {
@@ -98,6 +115,30 @@ body {
 	margin-left: 80px;
 	margin-right: 80px;
 	margin-bottom: -10px;
+}
+
+.label-concealed,
+.label-open,
+.label-openQuad,
+.label-concealedQuad,
+.label-dora,
+.label-tenpai {
+	font-size: 16px;
+	color: #b6795d;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 5px;
+}
+
+.label-tsumo {
+	font-size: 16px;
+	color: #b6795d;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 95px;
+	margin: -10px 20px 0px 20px;
 }
 
 /*todo*/
@@ -173,49 +214,12 @@ button {
 }
 
 /*tile type button*/
-.concealed-button {
-	border: 2px solid #b6795d;
-	background-color: transparent;
-	border-radius: 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 10px 10px 10px 10px;
-	cursor: pointer;
-	outline: none;
-	height: 50px;
-	margin: 0px 10px 0px 10px;
-}
-
-.open-button {
-	border: 2px solid #b6795d;
-	background-color: transparent;
-	border-radius: 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 10px;
-	cursor: pointer;
-	outline: none;
-	height: 50px;
-	margin: 0px 10px 0px 10px;
-}
-
-.concealedQuad-button {
-	border: 2px solid #b6795d;
-	background-color: transparent;
-	border-radius: 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 10px;
-	cursor: pointer;
-	outline: none;
-	height: 50px;
-	margin: 0px 10px 0px 10px;
-}
-
-.openQuad-button {
+.concealed-button,
+.open-button,
+.concealedQuad-button,
+.openQuad-button,
+.dora-button,
+.tenpai-button {
 	border: 2px solid #b6795d;
 	background-color: transparent;
 	border-radius: 10px;
@@ -242,7 +246,7 @@ button {
 	height: 25px;
 	border-radius: 3px;
 	background-color: #d1a691;
-	margin: 0px 2px;
+	margin: 0px 0.5px;
 }
 
 .openTripletFromOpponent-icon {
@@ -250,7 +254,7 @@ button {
 	height: 20px;
 	border-radius: 3px;
 	background-color: #d1a691;
-	margin: 5px -0.5px 0px -0.5px;
+	margin: 5px 0.5px 0px 0px;
 	bottom: 0;
 }
 
@@ -259,7 +263,7 @@ button {
 	height: 20px;
 	border-radius: 3px;
 	background-color: #d1a691;
-	margin: 5px 0.5px 0px 3px;
+	margin: 5px 0.5px 0px 0px;
 	bottom: 0;
 }
 .openQuad-icon {
@@ -279,12 +283,67 @@ button {
 	bottom: 0;
 }
 
-.faceUpconcealedQuad-icon {
+.faceUpConcealedQuad-icon {
 	width: 20px;
 	height: 25px;
 	border-radius: 3px;
 	background-color: #d1a691;
 	margin: 0.5px;
+	bottom: 0;
+}
+
+/* todo - dora*/
+/* face up version
+.dora-icon {
+	width: 20px;
+	height: 10px;
+	border-top: 10px solid #b6795d;
+	border-right: 2px solid #b6795d;
+	border-bottom: 2px solid #b6795d;
+	border-left: 2px solid #b6795d;
+	border-radius: 5px;
+}
+.revealedDora-icon {
+	width: 20px;
+	height: 10px;
+	border-top: 2px solid #b6795d;
+	border-right: 2px solid #b6795d;
+	border-bottom: 10px solid #b6795d;
+	border-left: 2px solid #b6795d;
+	border-radius: 5px;
+}*/
+.dora-icon {
+	width: 20px;
+	height: 25px;
+	border-radius: 3px;
+	background-color: #b6795d;
+	margin: 0.5px;
+	bottom: 0;
+}
+.revealedDora-icon {
+	width: 20px;
+	height: 25px;
+	border-radius: 3px;
+	background-color: #d1a691;
+	margin: 0.5px;
+	bottom: 0;
+}
+
+.tenpaiHand-icon {
+	width: 20px;
+	height: 25px;
+	border-radius: 3px;
+	background-color: #b6795d;
+	margin: 0.5px;
+	bottom: 0;
+}
+
+.tenpai-icon {
+	width: 20px;
+	height: 25px;
+	border-radius: 3px;
+	background-color: #d1a691;
+	margin: 0px 0px 0px 10px;
 	bottom: 0;
 }
 
@@ -328,7 +387,23 @@ button {
 	background-color: #d1a691;
 }
 
-.activeTileType .faceUpconcealedQuad-icon {
+.activeTileType .faceUpConcealedQuad-icon {
+	background-color: beige;
+}
+
+.activeTileType .tenpaiHand-icon {
+	background-color: #d1a691;
+}
+
+.activeTileType .tenpai-icon {
+	background-color: beige;
+}
+
+.activeTileType .dora-icon {
+	background-color: #d1a691;
+}
+
+.activeTileType .revealedDora-icon {
 	background-color: beige;
 }
 
@@ -359,6 +434,64 @@ button {
 .popup-message h2 {
 	color: rgba(255, 255, 255, 1);
 	opacity: 1;
+}
+
+/*
+justify-content: center;
+	align-items: center;
+*/
+
+/* slider switch */
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+	margin: 11px 0px 0px 0px;
+}
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #b1a099;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+input:checked + .slider {
+	background-color: #b6795d;
+}
+input:focus + .slider {
+	box-shadow: 0 0 1px #b6795d;
+}
+input:checked + .slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+.slider.round {
+	border-radius: 34px;
+}
+.slider.round:before {
+	border-radius: 50%;
 }
 
 @keyframes slideIn {
