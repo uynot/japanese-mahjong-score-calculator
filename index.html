@@ -64,17 +64,9 @@
 						</div>
 						<div class="label-container">
 							<span class="label-concealed">Ron Tile</span>
-							<button class="tenpai-button toggle-tileType" onclick="console.log('TEST: dora')">
+							<button class="tenpai-button toggle-tileType" onclick="console.log('TEST: tenpai')">
 								<!-- todo - write javascript to generate icons depends on how many tiles left : 13 - chi/pon - kan - ankan = (?) -->
 							</button>
-						</div>
-						<div class="label-container">
-							<span class="label-tsumo">Tsumo</span>
-							<label class="switch">
-								<!-- todo - tsumo button event -->
-								<input type="checkbox" id="tsumoToggle" />
-								<span class="slider round"></span>
-							</label>
 						</div>
 					</div>
 					<div class="flex-item-chiPonKan">
@@ -106,6 +98,24 @@
 						</div>
 					</div>
 
+					<div class="flex-item-switches">
+						<div class="label-container">
+							<span class="label-tsumo">Tsumo</span>
+							<label class="switch">
+								<!-- todo - tsumo button event -->
+								<input type="checkbox" id="tsumoToggle" />
+								<span class="slider round"></span>
+							</label>
+						</div>
+						<div class="label-container">
+							<span class="label-agariyame">West round extension</span>
+							<label class="switch">
+								<input type="checkbox" id="westExtDisabled" />
+								<span class="slider round"></span>
+							</label>
+						</div>
+					</div>
+
 					<div class="flex-item-kaze">
 						<div class="label-container">
 							<span class="label-tableWind">Prevailing Wind</span>
@@ -117,9 +127,9 @@
 									<img src="img/light/character2.svg" class="tileImg" draggable="false" />
 								</div>
 								<!-- todo - deathmatch -->
-								<!-- <div class="kazeTile toggle-tableWind">
+								<div id="westWind" class="kazeTile toggle-tableWind">
 									<img src="img/light/character3.svg" class="tileImg" draggable="false" />
-								</div> -->
+								</div>
 								<!-- <div class="kazeTile toggle-tableWind">
 									<img src="img/light/character4.svg" class="tileImg" draggable="false" />
 								</div> -->

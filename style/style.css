@@ -65,7 +65,8 @@ body {
 	align-items: center;
 }
 
-.flex-item-chiPonKan {
+.flex-item-chiPonKan,
+.flex-item-switches {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -137,8 +138,18 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 95px;
-	margin: -10px 20px 0px 20px;
+	width: 200px;
+	/*margin: -10px 20px 0px 20px;*/
+}
+
+.label-agariyame {
+	font-size: 16px;
+	color: #b6795d;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	/*margin: -10px 20px 0px 20px;*/
 }
 
 /*todo*/
@@ -492,6 +503,11 @@ input:checked + .slider:before {
 }
 .slider.round:before {
 	border-radius: 50%;
+}
+
+.disabled {
+	opacity: 0.5;
+	pointer-events: none;
 }
 
 @keyframes slideIn {
