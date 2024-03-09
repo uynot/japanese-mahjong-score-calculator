@@ -8,17 +8,7 @@ var chiPon = [
 ];
 var kan = [];
 var ankan = [];
-
-/*
-//verify tile type
-function isValidType(type) {
-	return tilesTypes.includes(type);
-}
-
-//verify kaze type
-function isValidKaze(kaze) {
-	return kazeTypes.includes(kaze);
-}*/
+var activeTableWind = 0;
 
 //spawn multiple concealed tile as button icon
 function generateBtnIcon() {
@@ -65,18 +55,56 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //switch the color of active table wind type
 //initially set ton wind as active table wind
-function setDefaultWind() {
-	const tableWinds = document.querySelectorAll(".toggle-tableWind");
-	tableWinds.forEach((wind) => {
-		wind.addEventListener("click", function () {
-			tableWinds.forEach((w) => w.classList.remove("activeTableWind"));
-			this.classList.add("activeTableWind");
-		});
+const tableWinds = document.querySelectorAll(".toggle-tableWind");
+tableWinds.forEach((wind) => {
+	wind.addEventListener("click", function () {
+		tableWinds.forEach((w) => w.classList.remove("activeTableWind"));
+		this.classList.add("activeTableWind");
+
+		//avoid wind changed after user turn off West Round Extension button
+		let container = document.querySelector(".flex-item-tableWind");
+		let tiles = Array.from(container.querySelectorAll(".kazeTile"));
+		let activeElement = container.querySelector(".activeTableWind");
+		let index = tiles.indexOf(activeElement);
+		if (index === 0) {
+			activeTableWind = 0;
+		} else if (index === 1) {
+			activeTableWind = 1;
+		} else if (index === 2) {
+			activeTableWind = 0;
+		} else {
+			popupMessage("Error occurred, please refresh the page");
+		}
 	});
-	document.getElementById("defaultTableWind").classList.add("activeTableWind");
+});
+document.getElementById("defaultTableWind").classList.add("activeTableWind");
+
+function setDefaultWind() {
+	let winds = document.getElementsByClassName("toggle-tableWind").length;
+	for (let i = 0; i < winds; i++) {
+		document.getElementsByClassName("toggle-tableWind")[i].classList.remove("activeTableWind");
+	}
+	document.getElementsByClassName("toggle-tableWind")[activeTableWind].classList.add("activeTableWind");
 }
 //init
 setDefaultWind();
+
+//west round extension toggle
+document.addEventListener("DOMContentLoaded", function () {
+	var toggle = document.getElementById("westExtDisabled");
+	var westWind = document.getElementById("westWind");
+
+	toggle.addEventListener("change", function () {
+		if (!this.checked) {
+			westWind.classList.add("disabled");
+			setDefaultWind();
+		} else {
+			westWind.classList.remove("disabled");
+			setDefaultWind();
+		}
+	});
+});
+document.getElementById("westWind").classList.add("disabled");
 
 //switch the color of active player wind type
 //initially set ton wind as active player wind
@@ -163,6 +191,17 @@ function showPopupMessage(text) {
 	}, 3000);
 }
 
+/*
+//verify tile type
+function isValidType(type) {
+	return tilesTypes.includes(type);
+}
+
+//verify kaze type
+function isValidKaze(kaze) {
+	return kazeTypes.includes(kaze);
+}*/
+
 //todo
 //Calculate Button
 document.addEventListener("DOMContentLoaded", function () {
@@ -173,19 +212,3 @@ document.addEventListener("DOMContentLoaded", function () {
 		showPopupMessage("incomplete func");
 	});
 });
-
-//west round extension toggle
-document.addEventListener("DOMContentLoaded", function () {
-	var toggle = document.getElementById("westExtDisabled");
-	var westWind = document.getElementById("westWind");
-
-	toggle.addEventListener("change", function () {
-		if (!this.checked) {
-			westWind.classList.add("disabled");
-			setDefaultWind();
-		} else {
-			westWind.classList.remove("disabled");
-		}
-	});
-});
-document.getElementById("westWind").classList.add("disabled");
