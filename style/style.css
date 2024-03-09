@@ -66,7 +66,8 @@ body {
 }
 
 .flex-item-chiPonKan,
-.flex-item-switches {
+.flex-item-switches,
+.flex-item-honba {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -76,6 +77,12 @@ body {
 }
 
 .flex-item-kaze {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-item-honbaItem {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -518,6 +525,12 @@ input:checked + .slider:before {
 .disabled {
 	opacity: 0.5;
 	pointer-events: none;
+}
+
+.honba100 {
+	transform: scale(1.5) rotate(0deg);
+	transform-origin: center;
+	margin: 10px 30px 10px 30px;
 }
 
 @keyframes slideIn {

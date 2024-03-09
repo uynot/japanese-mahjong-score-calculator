@@ -73,7 +73,7 @@ tableWinds.forEach((wind) => {
 		} else if (index === 2) {
 			activeTableWind = 0;
 		} else {
-			popupMessage("Error occurred, please refresh the page");
+			showPopupMessage("Error occurred. Please refresh the page");
 		}
 	});
 });
