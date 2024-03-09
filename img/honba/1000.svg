@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 228.32 25.55">
+  <defs>
+    <linearGradient id="_未命名漸層_110" data-name="未命名漸層 110" x1="114.16" y1="0" x2="114.16" y2="25.55" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f7f8f8"/>
+      <stop offset=".04" stop-color="#f7f7f6"/>
+      <stop offset=".16" stop-color="#edecea"/>
+      <stop offset=".41" stop-color="#e9e9e7"/>
+      <stop offset=".56" stop-color="#e4e3e1"/>
+      <stop offset=".72" stop-color="#e8e8e6"/>
+      <stop offset=".84" stop-color="#e1e0de"/>
+      <stop offset="1" stop-color="#dbdad6"/>
+    </linearGradient>
+    <linearGradient id="_未命名漸層_136" data-name="未命名漸層 136" x1="110.68" y1="16.25" x2="117.64" y2="9.3" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#830e00"/>
+      <stop offset=".04" stop-color="#7b1000"/>
+      <stop offset=".17" stop-color="#a51a00"/>
+      <stop offset=".41" stop-color="#a11100"/>
+      <stop offset=".56" stop-color="#ff4225"/>
+      <stop offset=".72" stop-color="#f12000"/>
+      <stop offset=".84" stop-color="#ad0d00"/>
+      <stop offset="1" stop-color="#670b00"/>
+    </linearGradient>
+  </defs>
+  <g style="fill: none; isolation: isolate;">
+    <g id="_圖層_1" data-name="圖層 1">
+      <rect width="228.32" height="25.55" rx="6.19" ry="6.19" style="fill: url(#_未命名漸層_110);"/>
+      <g>
+        <circle cx="114.16" cy="12.77" r="4.92" style="fill: url(#_未命名漸層_136);"/>
+        <path d="m117.74,9.42c.05.31.08.63.08.95,0,3.14-2.39,5.68-5.34,5.68-.89,0-1.73-.24-2.47-.65.87,1.37,2.4,2.29,4.14,2.29,2.72,0,4.92-2.2,4.92-4.92,0-1.3-.51-2.47-1.34-3.35Z" style="fill: #fff; mix-blend-mode: hard-light; opacity: .18;"/>
+      </g>
+    </g>
+  </g>
+</svg>
