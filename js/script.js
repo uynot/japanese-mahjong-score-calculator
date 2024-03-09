@@ -65,16 +65,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //switch the color of active table wind type
 //initially set ton wind as active table wind
-const tableWinds = document.querySelectorAll(".toggle-tableWind");
-tableWinds.forEach((wind) => {
-	wind.addEventListener("click", function () {
-		tableWinds.forEach((w) => w.classList.remove("activeTableWind"));
-		this.classList.add("activeTableWind");
+function setDefaultWind() {
+	const tableWinds = document.querySelectorAll(".toggle-tableWind");
+	tableWinds.forEach((wind) => {
+		wind.addEventListener("click", function () {
+			tableWinds.forEach((w) => w.classList.remove("activeTableWind"));
+			this.classList.add("activeTableWind");
+		});
 	});
-});
-document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("defaultTableWind").classList.add("activeTableWind");
-});
+}
+//init
+setDefaultWind();
 
 //switch the color of active player wind type
 //initially set ton wind as active player wind
@@ -130,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				redTile.style.backgroundImage = `url('/img/light/${tileType}.svg')`;
 				grid.appendChild(redTile);
 			}
+
 			//todo
 			// revamp - change to click => show in upper area instead of selection
 			/*tile.addEventListener("click", function () {
@@ -170,3 +173,19 @@ document.addEventListener("DOMContentLoaded", function () {
 		showPopupMessage("incomplete func");
 	});
 });
+
+//west round extension toggle
+document.addEventListener("DOMContentLoaded", function () {
+	var toggle = document.getElementById("westExtDisabled");
+	var westWind = document.getElementById("westWind");
+
+	toggle.addEventListener("change", function () {
+		if (!this.checked) {
+			westWind.classList.add("disabled");
+			setDefaultWind();
+		} else {
+			westWind.classList.remove("disabled");
+		}
+	});
+});
+document.getElementById("westWind").classList.add("disabled");
