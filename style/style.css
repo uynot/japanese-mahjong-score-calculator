@@ -66,8 +66,7 @@ body {
 }
 
 .flex-item-chiPonKan,
-.flex-item-switches,
-.flex-item-honba {
+.flex-item-switches {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -167,6 +166,15 @@ body {
 	align-items: center;
 	width: 400px;
 	margin: 10px 0px 10px 0px;
+}
+
+.label-honbaTimes {
+	font-size: 16px;
+	color: #b6795d;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
 }
 
 /*todo*/
@@ -531,6 +539,62 @@ input:checked + .slider:before {
 	transform: scale(1.5) rotate(0deg);
 	transform-origin: center;
 	margin: 10px 30px 10px 30px;
+	width: 100px;
+	height: 10px;
+}
+
+.honbaAdd {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0px 5px 0px 10px;
+}
+
+.honbaDrop {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0px 0px 0px 0px;
+	text-align: center;
+}
+
+.calculate-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Kanteiryu", sans-serif;
+	text-align: center;
+	width: 200px;
+	height: 40px;
+	margin: 0px 0px 0px 0px;
+}
+
+.honbaAdjustBtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Kanteiryu", sans-serif;
+	width: 30px;
+	height: 30px;
+	background-color: transparent;
+	border-radius: 5px;
+	color: #b6795d;
+	border: 2px solid #b6795d;
+	outline: none;
+	transition: all 0.3s ease;
+}
+
+.honbaAdjustBtn:hover {
+	background-color: #ff0000;
+	color: white;
+	border-color: #367c39;
+}
+
+.honbaAdjustBtn:active {
+	background-color: #367c39; /* Background color when clicked */
+	border-color: #275a27; /* Border color when clicked */
+	box-shadow: 0 2px #666; /* Pushed effect with box shadow */
+	transform: translateY(2px); /* Simulate button being pressed down */
 }
 
 @keyframes slideIn {

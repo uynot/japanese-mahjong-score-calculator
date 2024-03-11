@@ -205,7 +205,7 @@ function isValidKaze(kaze) {
 //todo
 //Calculate Button
 document.addEventListener("DOMContentLoaded", function () {
-	document.getElementById("calculateScore").addEventListener("click", function () {
+	document.getElementById("calculateBtn").addEventListener("click", function () {
 		// todo
 		// logic to calculate the score
 		console.log("Calculate score for selected tiles");
