@@ -1,5 +1,9 @@
-//global var
+//init global var
 var popupTimeout;
+var activeTableWind = 0;
+var westEnabled = false;
+
+//calucation global var
 /*
 	todo - tiles icon amount depends on this global variable
 */
@@ -9,7 +13,7 @@ var chiPon = [
 ];
 var kan = [];
 var ankan = [];
-var activeTableWind = 0;
+var honba = 0;
 
 //spawn multiple concealed tile as button icon
 function generateBtnIcon() {
@@ -69,10 +73,13 @@ tableWinds.forEach((wind) => {
 		let index = tiles.indexOf(activeElement);
 		if (index === 0) {
 			activeTableWind = 0;
+			westEnabled = false;
 		} else if (index === 1) {
 			activeTableWind = 1;
+			westEnabled = false;
 		} else if (index === 2) {
 			activeTableWind = 0;
+			westEnabled = true;
 		} else {
 			showPopupMessage("Error occurred. Please refresh the page");
 		}
@@ -96,7 +103,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	var westWind = document.getElementById("westWind");
 
 	toggle.addEventListener("change", function () {
-		if (!this.checked) {
+		if (!this.checked && westEnabled) {
+			setDefaultWind();
+			westWind.classList.add("disabled");
+
+			let westWindButton = document.getElementById("westWind");
+			westWindButton.classList.add("shake");
+			setTimeout(() => {
+				westWindButton.classList.remove("shake");
+			}, 1000);
+		} else if (!this.checked && activeTableWind != 2) {
 			westWind.classList.add("disabled");
 			setDefaultWind();
 		} else {
@@ -142,11 +158,15 @@ document.addEventListener("DOMContentLoaded", function () {
 		var newHonba = currentHonba + delta;
 
 		if (newHonba < 0) {
-			showPopupMessage("Honba must be larger than 0");
 			newHonba = 0;
+			showPopupMessage("Honba must be larger than 0");
+		} else if (newHonba > 99) {
+			newHonba = 99;
+			showPopupMessage("Honba must be less than 99");
 		} else {
 			honbaLabel.textContent = " x " + newHonba;
 		}
+		honba = newHonba;
 	}
 
 	var honbaAddButton = document.querySelector(".honbaAdd .honbaAdjustBtn");
@@ -157,6 +177,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	var honbaDropButton = document.querySelector(".honbaDrop .honbaAdjustBtn");
 	honbaDropButton.addEventListener("click", function () {
 		updateHonbaLabel(-1);
+	});
+
+	var honbaResetButton = document.querySelector(".honbaReset .honbaAdjustBtn");
+	honbaResetButton.addEventListener("click", function () {
+		updateHonbaLabel(-honba);
 	});
 });
 

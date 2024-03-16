@@ -174,7 +174,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 40px;
+	width: 55px;
 }
 
 /*todo*/
@@ -547,14 +547,20 @@ input:checked + .slider:before {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 0px 5px 0px 10px;
+	margin: 0px 5px 0px 5px;
 }
-
 .honbaDrop {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 0px 0px 0px 0px;
+	text-align: center;
+}
+.honbaReset {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0px 0px 0px 5px;
 	text-align: center;
 }
 
@@ -625,6 +631,31 @@ input:checked + .slider:before {
 	src: url("/font/ipag.ttf") format("woff2");
 	font-weight: normal;
 	font-style: normal;
+}
+
+@keyframes shake {
+	0% {
+		transform: translateX(0);
+	}
+	20% {
+		transform: translateX(-5px);
+	}
+	40% {
+		transform: translateX(4px);
+	}
+	60% {
+		transform: translateX(-3px);
+	}
+	80% {
+		transform: translateX(2px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.shake {
+	animation: shake 0.5s;
 }
 
 /* Responsive adjustments */
