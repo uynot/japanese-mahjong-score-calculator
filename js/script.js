@@ -1,4 +1,5 @@
 //global var
+var popupTimeout;
 /*
 	todo - tiles icon amount depends on this global variable
 */
@@ -133,6 +134,32 @@ document.getElementById("tsumoToggle").addEventListener("change", function () {
 	}
 });
 
+//honba +- click event
+document.addEventListener("DOMContentLoaded", function () {
+	function updateHonbaLabel(delta) {
+		var honbaLabel = document.querySelector(".label-honbaTimes");
+		var currentHonba = parseInt(honbaLabel.textContent.split("x")[1]) || 0;
+		var newHonba = currentHonba + delta;
+
+		if (newHonba < 0) {
+			showPopupMessage("Honba must be larger than 0");
+			newHonba = 0;
+		} else {
+			honbaLabel.textContent = " x " + newHonba;
+		}
+	}
+
+	var honbaAddButton = document.querySelector(".honbaAdd .honbaAdjustBtn");
+	honbaAddButton.addEventListener("click", function () {
+		updateHonbaLabel(1);
+	});
+
+	var honbaDropButton = document.querySelector(".honbaDrop .honbaAdjustBtn");
+	honbaDropButton.addEventListener("click", function () {
+		updateHonbaLabel(-1);
+	});
+});
+
 //todo
 //tiles grid
 document.addEventListener("DOMContentLoaded", function () {
@@ -182,11 +209,16 @@ function showPopupMessage(text) {
 	var popupMessage = document.getElementById("popupMessage");
 	var messageText = popupMessage.querySelector(".popupMessageText");
 
-	messageText.textContent = text ? text : "Error occurred";
+	messageText.textContent = text || "Error occurred";
+
+	clearTimeout(popupTimeout);
+
+	popupMessage.classList.remove("popup-show");
+	void popupMessage.offsetWidth;
+
 	popupMessage.classList.add("popup-show");
 
-	// remove the popup after the animations complete (3 seconds total)
-	setTimeout(function () {
+	popupTimeout = setTimeout(function () {
 		popupMessage.classList.remove("popup-show");
 	}, 3000);
 }
