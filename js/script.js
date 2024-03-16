@@ -191,7 +191,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	var honbaResetButton = document.querySelector(".honbaReset .honbaAdjustBtn");
 	honbaResetButton.addEventListener("click", function () {
-		updateHonbaLabel(-honba);
+		var honbaLabel = document.querySelector(".label-honbaTimes");
+		var currentHonba = parseInt(honbaLabel.textContent.split("x")[1]) || 0;
+
+		if (currentHonba != 0) {
+			updateHonbaLabel(-honba);
+		} else {
+			clearTimeout(zeroHonbaTimeout);
+
+			let honbaLabel = document.getElementById("honbaTime");
+			honbaLabel.classList.remove("shake");
+			void honbaLabel.offsetWidth;
+			honbaLabel.classList.add("shake");
+
+			zeroHonbaTimeout = setTimeout(() => {
+				honbaLabel.classList.remove("shake");
+			}, 1000);
+		}
 	});
 });
 
