@@ -174,7 +174,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 40px;
+	width: 55px;
 }
 
 /*todo*/
@@ -547,14 +547,20 @@ input:checked + .slider:before {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 0px 5px 0px 10px;
+	margin: 0px 5px 0px 5px;
 }
-
 .honbaDrop {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 0px 0px 0px 0px;
+	text-align: center;
+}
+.honbaReset {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0px 0px 0px 5px;
 	text-align: center;
 }
 
