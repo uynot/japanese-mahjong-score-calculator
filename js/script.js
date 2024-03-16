@@ -1,6 +1,7 @@
 //init global var
 var popupTimeout;
 var activeTableWind = 0;
+var westEnabled = false;
 
 //calucation global var
 /*
@@ -72,10 +73,13 @@ tableWinds.forEach((wind) => {
 		let index = tiles.indexOf(activeElement);
 		if (index === 0) {
 			activeTableWind = 0;
+			westEnabled = false;
 		} else if (index === 1) {
 			activeTableWind = 1;
+			westEnabled = false;
 		} else if (index === 2) {
 			activeTableWind = 0;
+			westEnabled = true;
 		} else {
 			showPopupMessage("Error occurred. Please refresh the page");
 		}
@@ -99,7 +103,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	var westWind = document.getElementById("westWind");
 
 	toggle.addEventListener("change", function () {
-		if (!this.checked) {
+		if (!this.checked && westEnabled) {
+			setDefaultWind();
+			westWind.classList.add("disabled");
+
+			let westWindButton = document.getElementById("westWind");
+			westWindButton.classList.add("shake");
+			setTimeout(() => {
+				westWindButton.classList.remove("shake");
+			}, 1000);
+		} else if (!this.checked && activeTableWind != 2) {
 			westWind.classList.add("disabled");
 			setDefaultWind();
 		} else {
