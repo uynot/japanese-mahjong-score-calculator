@@ -1,5 +1,6 @@
 //init global var
 var popupTimeout;
+var zeroHonbaTimeout;
 var activeTableWind = 0;
 var westEnabled = false;
 
@@ -159,7 +160,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		if (newHonba < 0) {
 			newHonba = 0;
-			showPopupMessage("Honba must be larger than 0");
+			clearTimeout(zeroHonbaTimeout);
+
+			let honbaLabel = document.getElementById("honbaTime");
+			honbaLabel.classList.remove("shake");
+			void honbaLabel.offsetWidth;
+			honbaLabel.classList.add("shake");
+
+			zeroHonbaTimeout = setTimeout(() => {
+				honbaLabel.classList.remove("shake");
+			}, 1000);
 		} else if (newHonba > 99) {
 			newHonba = 99;
 			showPopupMessage("Honba must be less than 99");
