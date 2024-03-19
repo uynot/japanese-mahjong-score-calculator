@@ -113,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			setTimeout(() => {
 				westWindButton.classList.remove("shake");
 			}, 1000);
+			westEnabled = false;
 		} else if (!this.checked && activeTableWind != 2) {
 			westWind.classList.add("disabled");
 			setDefaultWind();
@@ -151,6 +152,18 @@ document.getElementById("tsumoToggle").addEventListener("change", function () {
 	}
 });
 
+function triggerShakeAnimation() {
+	let honbaLabel = document.getElementById("honbaTime");
+	honbaLabel.classList.remove("shake");
+	void honbaLabel.offsetWidth;
+	honbaLabel.classList.add("shake");
+
+	clearTimeout(zeroHonbaTimeout);
+	zeroHonbaTimeout = setTimeout(() => {
+		honbaLabel.classList.remove("shake");
+	}, 1000);
+}
+
 //honba +- click event
 document.addEventListener("DOMContentLoaded", function () {
 	function updateHonbaLabel(delta) {
@@ -160,21 +173,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		if (newHonba < 0) {
 			newHonba = 0;
-			clearTimeout(zeroHonbaTimeout);
-
-			let honbaLabel = document.getElementById("honbaTime");
-			honbaLabel.classList.remove("shake");
-			void honbaLabel.offsetWidth;
-			honbaLabel.classList.add("shake");
-
-			zeroHonbaTimeout = setTimeout(() => {
-				honbaLabel.classList.remove("shake");
-			}, 1000);
+			triggerShakeAnimation();
 		} else if (newHonba > 99) {
 			newHonba = 99;
-			showPopupMessage("Honba must be less than 99");
+			triggerShakeAnimation();
+			//showPopupMessage("Honba must be less than 99");
 		} else {
-			honbaLabel.textContent = " x " + newHonba;
+			document.getElementById("honbaTime").textContent = " x " + newHonba;
 		}
 		honba = newHonba;
 	}
@@ -197,16 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		if (currentHonba != 0) {
 			updateHonbaLabel(-honba);
 		} else {
-			clearTimeout(zeroHonbaTimeout);
-
-			let honbaLabel = document.getElementById("honbaTime");
-			honbaLabel.classList.remove("shake");
-			void honbaLabel.offsetWidth;
-			honbaLabel.classList.add("shake");
-
-			zeroHonbaTimeout = setTimeout(() => {
-				honbaLabel.classList.remove("shake");
-			}, 1000);
+			triggerShakeAnimation();
 		}
 	});
 });
