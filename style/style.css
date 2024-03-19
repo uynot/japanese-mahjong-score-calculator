@@ -87,6 +87,13 @@ body {
 	align-items: center;
 }
 
+.flex-item-honba {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
 .flex-item-tableWind,
 .flex-item-playerWind {
 	display: flex;
@@ -156,6 +163,27 @@ body {
 	align-items: center;
 	width: 200px;
 	/*margin: -10px 20px 0px 20px;*/
+}
+
+.label-riichi {
+	font-size: 16px;
+	color: #b6795d;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	transition: opacity 0.3s, transform 0.3s;
+	/*margin: -10px 20px 0px 20px;*/
+}
+
+.riichi-image {
+	position: absolute;
+	bottom: 0; /* Adjust as necessary */
+	left: 50%;
+	transform: translateX(-50%) translateY(20px);
+	transition: opacity 0.3s, transform 0.3s;
+	opacity: 0;
+	pointer-events: none; /* Prevent image from blocking interactions */
 }
 
 .label-honba {
@@ -598,6 +626,9 @@ input:checked + .slider:before {
 	/*transform: translateY(2px);*/
 	background-color: #b6795d;
 	color: #d1a691;
+}
+
+.riichiStickImg {
 }
 
 @keyframes slideIn {

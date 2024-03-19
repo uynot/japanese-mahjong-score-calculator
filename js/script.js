@@ -100,7 +100,7 @@ setDefaultWind();
 
 //west round extension toggle
 document.addEventListener("DOMContentLoaded", function () {
-	var toggle = document.getElementById("westExtDisabled");
+	var toggle = document.getElementById("westExtToggle");
 	var westWind = document.getElementById("westWind");
 
 	toggle.addEventListener("change", function () {
@@ -149,6 +149,20 @@ document.getElementById("tsumoToggle").addEventListener("change", function () {
 	} else {
 		//tsumoLabel.textContent = "Tsumo Off";
 		console.log("Tsumo: No");
+	}
+});
+
+//todo
+//riichi button event
+document.getElementById("riichiToggle").addEventListener("change", function () {
+	const riichiLabel = document.querySelector(".label-riichi");
+
+	if (this.checked) {
+		//tsumoLabel.textContent = "Riichi On";
+		console.log("Riichi: Yes");
+	} else {
+		//tsumoLabel.textContent = "Riichi Off";
+		console.log("Riichi: No");
 	}
 });
 
