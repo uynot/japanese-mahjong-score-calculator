@@ -301,7 +301,19 @@ document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("calculateBtn").addEventListener("click", function () {
 		// todo
 		// logic to calculate the score
+		// if else + isTenpai();
+
 		console.log("Calculate score for selected tiles");
+		showPopupMessage("incomplete func");
+	});
+});
+
+//
+document.addEventListener("DOMContentLoaded", function () {
+	document.getElementById("resetBtn").addEventListener("click", function () {
+		// todo
+		// logic to reset the options
+		console.log("Reset all options");
 		showPopupMessage("incomplete func");
 	});
 });

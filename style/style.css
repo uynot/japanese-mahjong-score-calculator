@@ -3,11 +3,26 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
 	margin: 0;
 	background-color: beige;
-	overflow: hidden;
+	/* overflow: hidden; */
 	font-family: "Kanteiryu", sans-serif;
+}
+
+/* scroll bar - chrome*/
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: beige;
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background: #d1a691;
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #b6795d;
 }
 
 .container {
@@ -17,10 +32,9 @@ body {
 .flex-container {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	border: 2px solid black;
 	margin: 10px;
-	width: 1000px;
+	width: auto;
 }
 
 .flex-item {
@@ -29,11 +43,77 @@ body {
 	flex-grow: 1;
 }
 
-.flex-item-displayBar {
+.flex-item-navbar {
 	flex-grow: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	height: 50px;
+	user-select: none;
+}
+/* todo - navbar */
+.navbarItem {
+	font-family: "Kanteiryu", sans-serif;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 200px;
+	margin: 10px 50px 10px 50px;
+	color: #d1a691;
+	outline: none;
+	background-color: transparent;
+	border-color: transparent;
+	border-radius: 5px;
+	transition: all 0.3s ease;
+}
+.navbarItem:hover {
+	box-shadow: inset 1px 1px 5px #b6795d, inset -1px -1px 5px #b6795d;
+}
+.navbarItem:active {
+	/* transform: translateY(5px); */
+	background-color: #b6795d;
+	color: beige;
+	border-color: #b6795d;
+	border: 1px;
+	outline: #b6795d;
+}
+
+/* todo - active navbar page */
+.navbarItemActive {
+	color: #b6795d;
+}
+
+.flex-item-displayBar {
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 200px;
+	user-select: none;
+}
+.flex-item-displayBarTile {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin: 10px 50px 10px 50px;
+}
+/* for open tiles - 🀇🀈🀉🀊🀊🀋🀋🀌🀌🀌<--->"🀍"🀎🀏 */
+.displayBarSpaceBetweenConcealedAndOpens {
+	margin-left: 80px;
+}
+/* for gaps between open tiles - 🀇🀈🀉🀊🀊🀋🀋		🀋🀌🀌<->"🀍"🀎🀏 */
+.displayBarSpaceBetweenOpens {
+	margin-left: 15px;
+}
+/* ron tile - 🀇🀈🀉🀊🀊🀋🀋🀌🀌🀍🀎🀏🀏 "🀏"*/
+/* need to REMOVE "tile" class in javascript */
+.displayBarRonTile {
+	margin-left: 15px;
+	margin-right: 0px;
+	margin-top: 8px;
+	transform: rotate(90deg);
 }
 
 .flex-item-tilesGrid {
@@ -92,6 +172,8 @@ body {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	margin-left: 100%;
+	margin-right: 100%;
 }
 
 .flex-item-tableWind,
@@ -107,6 +189,7 @@ body {
 .flex-item-calculateBtn {
 	flex-grow: 1;
 	display: flex;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 }
@@ -202,6 +285,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin: 0px 30px 0px 0px;
 	width: 55px;
 }
 
@@ -356,26 +440,6 @@ button {
 	bottom: 0;
 }
 
-/* todo - dora*/
-/* face up version
-.dora-icon {
-	width: 20px;
-	height: 10px;
-	border-top: 10px solid #b6795d;
-	border-right: 2px solid #b6795d;
-	border-bottom: 2px solid #b6795d;
-	border-left: 2px solid #b6795d;
-	border-radius: 5px;
-}
-.revealedDora-icon {
-	width: 20px;
-	height: 10px;
-	border-top: 2px solid #b6795d;
-	border-right: 2px solid #b6795d;
-	border-bottom: 10px solid #b6795d;
-	border-left: 2px solid #b6795d;
-	border-radius: 5px;
-}*/
 .dora-icon {
 	width: 20px;
 	height: 25px;
@@ -592,7 +656,8 @@ input:checked + .slider:before {
 	text-align: center;
 }
 
-.calculate-button {
+.calculate-button,
+.reset-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -600,7 +665,13 @@ input:checked + .slider:before {
 	text-align: center;
 	width: 200px;
 	height: 40px;
-	margin: 0px 0px 0px 0px;
+	margin: 0px 5px 0px 5px;
+	background-color: transparent;
+	border-radius: 5px;
+	color: #b6795d;
+	border: 2px solid #b6795d;
+	outline: none;
+	transition: all 0.3s ease;
 }
 
 .honbaAdjustBtn {
@@ -621,13 +692,25 @@ input:checked + .slider:before {
 .honbaAdjustBtn:hover {
 	box-shadow: inset 1px 1px 5px #b6795d, inset -1px -1px 5px #b6795d;
 }
-
 .honbaAdjustBtn:active {
-	/*transform: translateY(2px);*/
-	background-color: #b6795d;
-	color: #d1a691;
+	transform: translateY(5px);
+	/* background-color: #b6795d;
+	color: #d1a691; */
 }
 
+.calculate-button:hover,
+.reset-button:hover {
+	box-shadow: inset 1px 1px 5px #b6795d, inset -1px -1px 5px #b6795d;
+}
+
+.calculate-button:active,
+.reset-button:active {
+	/* transform: translateY(5px); */
+	background-color: #b6795d;
+	color: beige;
+}
+
+/* todo for riichi switch img - switch pop up red dot + label change to image*/
 .riichiStickImg {
 }
 

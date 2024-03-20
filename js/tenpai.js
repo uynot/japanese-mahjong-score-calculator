@@ -12,3 +12,6 @@ function isTenpai(handTiles) {
 	// If no tenpai found
 	return false;
 }
+
+//reset btn
+function isTenpai(handTiles) {}
