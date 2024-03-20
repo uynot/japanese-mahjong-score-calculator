@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="style/style.css" />
 		<!-- Javascript -->
 		<script src="js/script.js" defer></script>
+		<script src="js/tenpai.js" defer></script>
 	</head>
 	<body>
 		<!-- dialog --><!-- todo -->
@@ -15,24 +16,57 @@
 		</div>
 
 		<div class="flex-container">
-			<div class="flex-item flex-item-displayBar">TODO Navbar</div>
+			<!-- todo - navbar -->
+			<div class="flex-item flex-item-navbar">
+				<button class="navbarItem navbarItemActive">TODO Navbar</button>
+				<button class="navbarItem">TODO Navbar</button>
+				<button class="navbarItem">TODO Navbar</button>
+			</div>
+
 			<!--🀇🀈🀉🀊🀋🀌🀍🀎🀏-->
 			<!--🀙🀚🀛🀜🀝🀞🀟🀠🀡-->
 			<!--🀐🀑🀒🀓🀔🀕🀖🀗🀘-->
 			<!--🀀🀁🀂🀃🀆🀅🀄-->
 
-			<!-- Mahjong tiles area-->
+			<div class="flex-item flex-item-displayBar">
+				<div class="flex-item-displayBarTile">
+					<!-- testing img, delete afterwards-->
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile displayBarRonTile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div
+						class="tile displayBarSpaceBetweenConcealedAndOpens"
+						data-tile-type="sou1"
+						style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile displayBarSpaceBetweenOpens" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile displayBarSpaceBetweenOpens" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile displayBarSpaceBetweenOpens" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
+				</div>
+			</div>
+
+			<!-- Mahjong tiles area DO NOT REMOVE-->
 			<div class="flex-item flex-item-tilesGrid">
 				<div id="mahjongTiles" class="">
 					<div class="">
 						<div class="tile-grid">
-							<!-- tiles will be here -->
+							<!-- tile grid here-->
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="flex-item-ronTypes">
+			<div class="flex-item flex-item-ronTypes">
 				<div class="flex-item-tileTypes">
 					<div class="flex-item-handTenpei">
 						<div class="label-container">
@@ -185,9 +219,8 @@
 			</div>
 
 			<div class="flex-item flex-item-calculateBtn">
-				<div class="label-container">
-					<button id="calculateBtn" class="calculate-button">Calculate Score</button>
-				</div>
+				<button id="calculateBtn" class="calculate-button">Calculate</button>
+				<button id="resetBtn" class="reset-button">Reset</button>
 			</div>
 		</div>
 		<!-- end of flex-container-->
