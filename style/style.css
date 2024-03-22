@@ -50,6 +50,7 @@ body {
 	align-items: center;
 	height: 50px;
 	user-select: none;
+	margin: 10px;
 }
 /* todo - navbar */
 .navbarItem {
@@ -89,8 +90,8 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 200px;
 	user-select: none;
+	margin: 10px;
 }
 .flex-item-displayBarTile {
 	display: flex;
@@ -108,7 +109,6 @@ body {
 	margin-left: 15px;
 }
 /* ron tile - 🀇🀈🀉🀊🀊🀋🀋🀌🀌🀍🀎🀏🀏 "🀏"*/
-/* need to REMOVE "tile" class in javascript */
 .displayBarRonTile {
 	margin-left: 15px;
 	margin-right: 0px;
@@ -138,11 +138,13 @@ body {
 	margin: 10px;
 }
 
-.flex-item-handTenpei {
+.flex-item-handDoraTenpai {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	margin-left: 100%;
+	margin-right: 100%;
 }
 
 .flex-item-chiPonKan,
@@ -159,6 +161,8 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-left: 100%;
+	margin-right: 100%;
 }
 
 .flex-item-honbaItem {
@@ -325,6 +329,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(10, 1fr);
 	gap: 10px;
+	margin: 10px;
 }
 
 .kazeTile {
@@ -344,6 +349,7 @@ body {
 	user-select: none;
 	/*pointer-events: none;*/
 	margin: 5px;
+	transition: all 0.3s ease;
 }
 
 /*todo*/
@@ -379,6 +385,7 @@ button {
 	outline: none;
 	height: 50px;
 	margin: 0px 10px 0px 10px;
+	transition: all 0.3s ease;
 }
 
 .concealed-icon {
@@ -479,6 +486,7 @@ button {
 /* color transform animation when hover */
 .concealed-button:hover {
 	/* background-color: #b6795d; */
+	box-shadow: inset 1px 1px 5px #b6795d, inset -1px -1px 5px #b6795d;
 }
 
 /* todo */
@@ -656,8 +664,7 @@ input:checked + .slider:before {
 	text-align: center;
 }
 
-.calculate-button,
-.reset-button {
+.calculate-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -665,7 +672,23 @@ input:checked + .slider:before {
 	text-align: center;
 	width: 200px;
 	height: 40px;
-	margin: 0px 5px 0px 5px;
+	margin: 10px 5px 10px 5px;
+	background-color: transparent;
+	border-radius: 5px;
+	color: #b6795d;
+	border: 2px solid #b6795d;
+	outline: none;
+	transition: all 0.3s ease;
+}
+.reset-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Kanteiryu", sans-serif;
+	text-align: center;
+	width: 80px;
+	height: 40px;
+	margin: 10px 5px 10px 5px;
 	background-color: transparent;
 	border-radius: 5px;
 	color: #b6795d;
@@ -705,9 +728,9 @@ input:checked + .slider:before {
 
 .calculate-button:active,
 .reset-button:active {
-	/* transform: translateY(5px); */
-	background-color: #b6795d;
-	color: beige;
+	transform: translateY(5px);
+	/* background-color: #b6795d;
+	color: beige; */
 }
 
 /* todo for riichi switch img - switch pop up red dot + label change to image*/
