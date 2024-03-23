@@ -352,11 +352,6 @@ body {
 	transition: all 0.3s ease;
 }
 
-/*todo*/
-.tile.selected {
-	background-color: #bada55;
-}
-
 button {
 	padding: 10px 20px;
 	font-size: 16px;
@@ -385,6 +380,8 @@ button {
 	outline: none;
 	height: 50px;
 	margin: 0px 10px 0px 10px;
+	transform-style: flat;
+	perspective: 1000px;
 	transition: all 0.3s ease;
 }
 
@@ -454,6 +451,9 @@ button {
 	background-color: #b6795d;
 	margin: 0.5px;
 	bottom: 0;
+	display: inline-block;
+	transition: transform 0.5s, background-color 0.5s;
+	transform-style: preserve-3d;
 }
 .revealedDora-icon {
 	width: 20px;
@@ -462,6 +462,7 @@ button {
 	background-color: #d1a691;
 	margin: 0.5px;
 	bottom: 0;
+	display: inline-block;
 }
 
 .tenpaiHand-icon {
@@ -482,63 +483,34 @@ button {
 	bottom: 0;
 }
 
-/* todo */
-/* color transform animation when hover */
-.concealed-button:hover {
-	/* background-color: #b6795d; */
-	box-shadow: inset 1px 1px 5px #b6795d, inset -1px -1px 5px #b6795d;
+.revealedDora-icon {
+	transition: transform 0.5s;
+	transform-style: preserve-3d;
+	will-change: transform;
 }
-
-/* todo */
-/* click to smaller the tile size and restore */
-.concealed-button:active {
-	/* background-color: #d1a691; */
+.dora-button:hover .revealedDora-icon {
+	transform: rotateX(180deg);
 }
 
 .activeTileType {
 	background-color: #b6795d;
 }
 
-.activeTileType .concealed-icon {
-	background-color: #d1a691;
-}
-
-.activeTileType .openTripletFromOpponent-icon {
-	background-color: beige;
-}
-
-.activeTileType .openTriplet-icon {
-	background-color: beige;
-}
-
-.activeTileType .openQuad-icon {
-	background-color: beige;
-}
-
-.activeTileType .openQuadFromOpponent-icon {
-	background-color: beige;
-}
-
-.activeTileType .concealedQuad-icon {
-	background-color: #d1a691;
-}
-
-.activeTileType .faceUpConcealedQuad-icon {
-	background-color: beige;
-}
-
-.activeTileType .tenpaiHand-icon {
-	background-color: #d1a691;
-}
-
-.activeTileType .tenpai-icon {
-	background-color: beige;
-}
-
+/* #d1a691 */
+.activeTileType .concealed-icon,
+.activeTileType .concealedQuad-icon,
+.activeTileType .tenpaiHand-icon,
 .activeTileType .dora-icon {
 	background-color: #d1a691;
 }
 
+/* beige */
+.activeTileType .openTripletFromOpponent-icon,
+.activeTileType .openTriplet-icon,
+.activeTileType .openQuad-icon,
+.activeTileType .openQuadFromOpponent-icon,
+.activeTileType .faceUpConcealedQuad-icon,
+.activeTileType .tenpai-icon,
 .activeTileType .revealedDora-icon {
 	background-color: beige;
 }
@@ -712,18 +684,17 @@ input:checked + .slider:before {
 	transition: all 0.3s ease;
 }
 
-.honbaAdjustBtn:hover {
-	box-shadow: inset 1px 1px 5px #b6795d, inset -1px -1px 5px #b6795d;
-}
 .honbaAdjustBtn:active {
 	transform: translateY(5px);
 	/* background-color: #b6795d;
 	color: #d1a691; */
 }
 
-.calculate-button:hover,
-.reset-button:hover {
+.hoverShadow:hover {
 	box-shadow: inset 1px 1px 5px #b6795d, inset -1px -1px 5px #b6795d;
+}
+.hoverBlue:hover {
+	background-color: rgb(176, 203, 224);
 }
 
 .calculate-button:active,

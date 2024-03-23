@@ -74,7 +74,7 @@
 							<!--
 							todo - write javascript to generate icons depends on how many tiles left : 13 - chi/pon - kan - ankan = (?)
 						-->
-							<button id="defaultTileType" class="concealed-button toggle-tileType" onclick="console.log('TEST: concealed')">
+							<button id="defaultTileType" class="concealed-button toggle-tileType hoverShadow" onclick="console.log('TEST: concealed')">
 								<!-- tile span spawn by js -->
 							</button>
 						</div>
@@ -83,10 +83,7 @@
 					-->
 						<div class="label-container">
 							<span class="label-concealed">Dora</span>
-							<button class="dora-button toggle-tileType" onclick="console.log('TEST: dora')">
-								<!--
-								todo - dora tile icon
-							-->
+							<button class="dora-button toggle-tileType hoverShadow" onclick="console.log('TEST: dora')">
 								<span class="dora-icon"></span>
 								<span class="dora-icon"></span>
 								<span class="revealedDora-icon"></span>
@@ -98,7 +95,7 @@
 						</div>
 						<div class="label-container">
 							<span class="label-concealed">Ron Tile</span>
-							<button class="tenpai-button toggle-tileType" onclick="console.log('TEST: tenpai')">
+							<button class="tenpai-button toggle-tileType hoverShadow" onclick="console.log('TEST: tenpai')">
 								<!-- todo - write javascript to generate icons depends on how many tiles left : 13 - chi/pon - kan - ankan = (?) -->
 							</button>
 						</div>
@@ -106,7 +103,7 @@
 					<div class="flex-item-chiPonKan">
 						<div class="label-container">
 							<span class="label-concealed">Chi/Pon</span>
-							<button class="open-button toggle-tileType" onclick="console.log('TEST: open')">
+							<button class="open-button toggle-tileType hoverShadow" onclick="console.log('TEST: open')">
 								<span class="openTripletFromOpponent-icon"></span>
 								<span class="openTriplet-icon"></span>
 								<span class="openTriplet-icon"></span>
@@ -114,7 +111,7 @@
 						</div>
 						<div class="label-container">
 							<span class="label-concealed">Kan</span>
-							<button class="openQuad-button toggle-tileType" onclick="console.log('TEST: open quad')">
+							<button class="openQuad-button toggle-tileType hoverShadow" onclick="console.log('TEST: open quad')">
 								<span class="openQuadFromOpponent-icon"></span>
 								<span class="openQuad-icon"></span>
 								<span class="openQuad-icon"></span>
@@ -123,7 +120,7 @@
 						</div>
 						<div class="label-container">
 							<span class="label-concealed">Ankan</span>
-							<button class="concealedQuad-button toggle-tileType" onclick="console.log('TEST: concealed quad')">
+							<button class="concealedQuad-button toggle-tileType hoverShadow" onclick="console.log('TEST: concealed quad')">
 								<span class="concealedQuad-icon"></span>
 								<span class="faceUpConcealedQuad-icon"></span>
 								<span class="faceUpConcealedQuad-icon"></span>
@@ -162,14 +159,14 @@
 						<div class="label-container">
 							<span class="label-tableWind">Prevailing Wind</span>
 							<div class="flex-item-tableWind">
-								<div id="defaultTableWind" class="kazeTile toggle-tableWind">
+								<div id="defaultTableWind" class="hoverBlue kazeTile toggle-tableWind">
 									<img src="img/light/character1.svg" class="tileImg" draggable="false" />
 								</div>
-								<div class="kazeTile toggle-tableWind">
+								<div class="hoverBlue kazeTile toggle-tableWind">
 									<img src="img/light/character2.svg" class="tileImg" draggable="false" />
 								</div>
 								<!-- todo - deathmatch -->
-								<div id="westWind" class="kazeTile toggle-tableWind">
+								<div id="westWind" class="hoverBlue kazeTile toggle-tableWind">
 									<img src="img/light/character3.svg" class="tileImg" draggable="false" />
 								</div>
 								<!-- <div class="kazeTile toggle-tableWind">
@@ -181,16 +178,16 @@
 						<div class="label-container">
 							<span class="label-playerWind">Seat Wind</span>
 							<div class="flex-item-playerWind">
-								<div id="defaultPlayerWind" class="kazeTile toggle-playerWind">
+								<div id="defaultPlayerWind" class="hoverBlue kazeTile toggle-playerWind">
 									<img src="img/light/character1.svg" class="tileImg" draggable="false" />
 								</div>
-								<div class="kazeTile toggle-playerWind">
+								<div class="hoverBlue kazeTile toggle-playerWind">
 									<img src="img/light/character2.svg" class="tileImg" draggable="false" />
 								</div>
-								<div class="kazeTile toggle-playerWind">
+								<div class="hoverBlue kazeTile toggle-playerWind">
 									<img src="img/light/character3.svg" class="tileImg" draggable="false" />
 								</div>
-								<div class="kazeTile toggle-playerWind">
+								<div class="hoverBlue kazeTile toggle-playerWind">
 									<img src="img/light/character4.svg" class="tileImg" draggable="false" />
 								</div>
 							</div>
@@ -204,13 +201,13 @@
 								<img class="honba100" src="img/honba/100.svg" />
 								<span id="honbaTime" class="label-honbaTimes"> x 0</span>
 								<div class="honbaAdd">
-									<button class="honbaAdjustBtn">+</button>
+									<button class="honbaAdjustBtn hoverShadow">+</button>
 								</div>
 								<div class="honbaDrop">
-									<button class="honbaAdjustBtn">-</button>
+									<button class="honbaAdjustBtn hoverShadow">-</button>
 								</div>
 								<div class="honbaReset">
-									<button class="honbaAdjustBtn">0</button>
+									<button class="honbaAdjustBtn hoverShadow">0</button>
 								</div>
 							</div>
 						</div>
@@ -219,8 +216,8 @@
 			</div>
 
 			<div class="flex-item flex-item-calculateBtn">
-				<button id="calculateBtn" class="calculate-button">Calculate</button>
-				<button id="resetBtn" class="reset-button">Reset</button>
+				<button id="calculateBtn" class="calculate-button hoverShadow">Calculate</button>
+				<button id="resetBtn" class="reset-button hoverShadow">Reset</button>
 			</div>
 		</div>
 		<!-- end of flex-container-->
