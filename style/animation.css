@@ -1,0 +1,67 @@
+/* error shake */
+.shake {
+	animation: shake 0.5s;
+}
+@keyframes shake {
+	0% {
+		transform: translateX(0);
+	}
+	20% {
+		transform: translateX(-5px);
+	}
+	40% {
+		transform: translateX(4px);
+	}
+	60% {
+		transform: translateX(-3px);
+	}
+	80% {
+		transform: translateX(2px);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+/* dialog pop up animation */
+.popup-show {
+	animation: slideIn 0.5s forwards, slideOut 0.5s 2s forwards;
+}
+@keyframes slideIn {
+	from {
+		top: -50px;
+		opacity: 0;
+	}
+	to {
+		top: 50%;
+		opacity: 1;
+	}
+}
+@keyframes slideOut {
+	from {
+		top: 50%;
+		opacity: 1;
+	}
+	to {
+		top: -50px;
+		opacity: 0;
+	}
+}
+
+/* honba,calculate,reset button animation on click */
+.honbaAdjustBtn:active,
+.calculate-button:active,
+.reset-button:active,
+.faq-button:active {
+	transform: translateY(5px);
+}
+
+/* dora flip animation */
+.revealedDora-icon {
+	transition: transform 0.5s;
+	transform-style: preserve-3d;
+	will-change: transform;
+}
+.dora-button:hover .revealedDora-icon {
+	transform: rotateX(180deg);
+}

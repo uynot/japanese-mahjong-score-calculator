@@ -9,6 +9,17 @@ body {
 	font-family: "Kanteiryu", sans-serif;
 }
 
+button {
+	font-family: "Kanteiryu", sans-serif;
+}
+
+@font-face {
+	font-family: "Kanteiryu";
+	src: url("/font/ipag.ttf") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+}
+
 /* scroll bar - chrome*/
 ::-webkit-scrollbar {
 	width: 10px;
@@ -52,9 +63,10 @@ body {
 	user-select: none;
 	margin: 10px;
 }
+
+/* revamp to > xxx < */
 /* todo - navbar */
 .navbarItem {
-	font-family: "Kanteiryu", sans-serif;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -72,17 +84,15 @@ body {
 	box-shadow: inset 1px 1px 5px #b6795d, inset -1px -1px 5px #b6795d;
 }
 .navbarItem:active {
-	/* transform: translateY(5px); */
 	background-color: #b6795d;
 	color: beige;
 	border-color: #b6795d;
 	border: 1px;
 	outline: #b6795d;
 }
-
 /* todo - active navbar page */
 .navbarItemActive {
-	color: #b6795d;
+	color: #ff0000;
 }
 
 .flex-item-displayBar {
@@ -252,6 +262,7 @@ body {
 	/*margin: -10px 20px 0px 20px;*/
 }
 
+/* todo - riichi effect */
 .label-riichi {
 	font-size: 16px;
 	color: #b6795d;
@@ -261,16 +272,6 @@ body {
 	width: 200px;
 	transition: opacity 0.3s, transform 0.3s;
 	/*margin: -10px 20px 0px 20px;*/
-}
-
-.riichi-image {
-	position: absolute;
-	bottom: 0; /* Adjust as necessary */
-	left: 50%;
-	transform: translateX(-50%) translateY(20px);
-	transition: opacity 0.3s, transform 0.3s;
-	opacity: 0;
-	pointer-events: none; /* Prevent image from blocking interactions */
 }
 
 .label-honba {
@@ -293,12 +294,8 @@ body {
 	width: 55px;
 }
 
-/*todo*/
-.tiles {
-}
-
+/* todo - hover and active to be blue */
 /*tiles Grid*/
-/*todo*/
 .tile {
 	width: 20px;
 	height: 30px;
@@ -314,10 +311,18 @@ body {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	/*pointer-events: none;*/
-	background-size: 80%; /* or 'cover' depending on your needs */
+	background-size: 80%;
 	background-repeat: no-repeat;
 	background-position: center;
+	transition: all 0.05s ease;
+}
+
+.tile:hover {
+	background-color: #c6dbf3;
+}
+
+.tile:hover:active {
+	background-color: #b0cbe0;
 }
 
 .tileImg {
@@ -328,7 +333,7 @@ body {
 .tile-grid {
 	display: grid;
 	grid-template-columns: repeat(10, 1fr);
-	gap: 10px;
+	gap: 2px;
 	margin: 10px;
 }
 
@@ -353,9 +358,8 @@ body {
 }
 
 button {
-	padding: 10px 20px;
 	font-size: 16px;
-	cursor: default;
+	cursor: pointer;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -392,7 +396,6 @@ button {
 	background-color: #b6795d;
 	margin: 0.5px;
 }
-
 .openTriplet-icon {
 	width: 20px;
 	height: 25px;
@@ -400,7 +403,6 @@ button {
 	background-color: #d1a691;
 	margin: 0px 0.5px;
 }
-
 .openTripletFromOpponent-icon {
 	width: 25px;
 	height: 20px;
@@ -409,7 +411,6 @@ button {
 	margin: 5px 0.5px 0px 0px;
 	bottom: 0;
 }
-
 .openQuadFromOpponent-icon {
 	width: 25px;
 	height: 20px;
@@ -434,7 +435,6 @@ button {
 	margin: 0.5px;
 	bottom: 0;
 }
-
 .faceUpConcealedQuad-icon {
 	width: 20px;
 	height: 25px;
@@ -443,7 +443,6 @@ button {
 	margin: 0.5px;
 	bottom: 0;
 }
-
 .dora-icon {
 	width: 20px;
 	height: 25px;
@@ -452,7 +451,7 @@ button {
 	margin: 0.5px;
 	bottom: 0;
 	display: inline-block;
-	transition: transform 0.5s, background-color 0.5s;
+	transition: transform 0.3s, background-color 0.3s;
 	transform-style: preserve-3d;
 }
 .revealedDora-icon {
@@ -464,7 +463,6 @@ button {
 	bottom: 0;
 	display: inline-block;
 }
-
 .tenpaiHand-icon {
 	width: 20px;
 	height: 25px;
@@ -473,7 +471,6 @@ button {
 	margin: 0.5px;
 	bottom: 0;
 }
-
 .tenpai-icon {
 	width: 20px;
 	height: 25px;
@@ -481,15 +478,6 @@ button {
 	background-color: #d1a691;
 	margin: 0px 0px 0px 10px;
 	bottom: 0;
-}
-
-.revealedDora-icon {
-	transition: transform 0.5s;
-	transform-style: preserve-3d;
-	will-change: transform;
-}
-.dora-button:hover .revealedDora-icon {
-	transform: rotateX(180deg);
 }
 
 .activeTileType {
@@ -570,8 +558,8 @@ justify-content: center;
 	right: 0;
 	bottom: 0;
 	background-color: #b1a099;
-	-webkit-transition: 0.4s;
-	transition: 0.4s;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
 }
 .slider:before {
 	position: absolute;
@@ -581,8 +569,8 @@ justify-content: center;
 	left: 4px;
 	bottom: 4px;
 	background-color: white;
-	-webkit-transition: 0.4s;
-	transition: 0.4s;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
 }
 input:checked + .slider {
 	background-color: #b6795d;
@@ -607,7 +595,7 @@ input:checked + .slider:before {
 	pointer-events: none;
 }
 
-.honba100 {
+.honba-image {
 	transform: scale(1.5) rotate(0deg);
 	transform-origin: center;
 	margin: 10px 30px 10px 30px;
@@ -635,12 +623,24 @@ input:checked + .slider:before {
 	margin: 0px 0px 0px 5px;
 	text-align: center;
 }
+.honbaAdjustBtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 30px;
+	background-color: transparent;
+	border-radius: 5px;
+	color: #b6795d;
+	border: 2px solid #b6795d;
+	outline: none;
+	transition: all 0.3s ease;
+}
 
 .calculate-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-family: "Kanteiryu", sans-serif;
 	text-align: center;
 	width: 200px;
 	height: 40px;
@@ -656,7 +656,6 @@ input:checked + .slider:before {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-family: "Kanteiryu", sans-serif;
 	text-align: center;
 	width: 80px;
 	height: 40px;
@@ -668,14 +667,14 @@ input:checked + .slider:before {
 	outline: none;
 	transition: all 0.3s ease;
 }
-
-.honbaAdjustBtn {
+.help-button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-family: "Kanteiryu", sans-serif;
-	width: 30px;
-	height: 30px;
+	text-align: center;
+	width: 60px;
+	height: 40px;
+	margin: 10px 5px 10px 5px;
 	background-color: transparent;
 	border-radius: 5px;
 	color: #b6795d;
@@ -684,96 +683,20 @@ input:checked + .slider:before {
 	transition: all 0.3s ease;
 }
 
-.honbaAdjustBtn:active {
-	transform: translateY(5px);
-	/* background-color: #b6795d;
-	color: #d1a691; */
-}
-
 .hoverShadow:hover {
 	box-shadow: inset 1px 1px 5px #b6795d, inset -1px -1px 5px #b6795d;
 }
 .hoverBlue:hover {
-	background-color: rgb(176, 203, 224);
-}
-
-.calculate-button:active,
-.reset-button:active {
-	transform: translateY(5px);
-	/* background-color: #b6795d;
-	color: beige; */
+	background-color: #b0cbe0;
 }
 
 /* todo for riichi switch img - switch pop up red dot + label change to image*/
-.riichiStickImg {
+.riichi-image {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%) translateY(20px);
+	transition: opacity 0.3s, transform 0.3s;
+	opacity: 0;
+	pointer-events: none;
 }
-
-@keyframes slideIn {
-	from {
-		top: -50px;
-		opacity: 0;
-	}
-	to {
-		top: 50%;
-		opacity: 1;
-	}
-}
-
-@keyframes slideOut {
-	from {
-		top: 50%;
-		opacity: 1;
-	}
-	to {
-		top: -50px;
-		opacity: 0;
-	}
-}
-
-.popup-show {
-	animation: slideIn 0.5s forwards, slideOut 0.5s 2s forwards;
-}
-
-@font-face {
-	font-family: "Kanteiryu";
-	src: url("/font/ipag.ttf") format("woff2");
-	font-weight: normal;
-	font-style: normal;
-}
-
-@keyframes shake {
-	0% {
-		transform: translateX(0);
-	}
-	20% {
-		transform: translateX(-5px);
-	}
-	40% {
-		transform: translateX(4px);
-	}
-	60% {
-		transform: translateX(-3px);
-	}
-	80% {
-		transform: translateX(2px);
-	}
-	100% {
-		transform: translateX(0);
-	}
-}
-
-.shake {
-	animation: shake 0.5s;
-}
-
-/* Responsive adjustments */
-/* @media (max-width: 600px) {
-	.tiles {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	.tile {
-		width: 50px;
-		height: 70px;
-	}
-} */

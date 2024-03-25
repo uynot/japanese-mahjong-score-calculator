@@ -4,7 +4,10 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Mahjong Score Calculator</title>
+		<!-- css -->
 		<link rel="stylesheet" href="style/style.css" />
+		<link rel="stylesheet" href="style/animation.css" />
+		<link rel="stylesheet" href="style/responsive.css" />
 		<!-- Javascript -->
 		<script src="js/script.js" defer></script>
 		<script src="js/tenpai.js" defer></script>
@@ -57,13 +60,13 @@
 
 			<!-- Mahjong tiles area DO NOT REMOVE-->
 			<div class="flex-item flex-item-tilesGrid">
-				<div id="mahjongTiles" class="">
-					<div class="">
-						<div class="tile-grid">
-							<!-- tile grid here-->
-						</div>
-					</div>
+				<!-- <div id="" class=""> -->
+				<!-- <div class="tile-grid-frame"> -->
+				<div class="tile-grid">
+					<!-- tile grid here-->
 				</div>
+				<!-- </div> -->
+				<!-- </div> -->
 			</div>
 
 			<div class="flex-item flex-item-ronTypes">
@@ -198,7 +201,7 @@
 						<div class="label-container">
 							<span class="label-honba">Continuous Dealership</span>
 							<div class="flex-item-honbaItem">
-								<img class="honba100" src="img/honba/100.svg" />
+								<img class="honba-image" src="img/honba/100.svg" />
 								<span id="honbaTime" class="label-honbaTimes"> x 0</span>
 								<div class="honbaAdd">
 									<button class="honbaAdjustBtn hoverShadow">+</button>
@@ -218,6 +221,7 @@
 			<div class="flex-item flex-item-calculateBtn">
 				<button id="calculateBtn" class="calculate-button hoverShadow">Calculate</button>
 				<button id="resetBtn" class="reset-button hoverShadow">Reset</button>
+				<button id="helpBtn" class="help-button hoverShadow">Help</button>
 			</div>
 		</div>
 		<!-- end of flex-container-->
