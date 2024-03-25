@@ -52,7 +52,7 @@
 .honbaAdjustBtn:active,
 .calculate-button:active,
 .reset-button:active,
-.faq-button:active {
+.help-button:active {
 	transform: translateY(5px);
 }
 
