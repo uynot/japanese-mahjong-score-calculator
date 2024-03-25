@@ -305,17 +305,22 @@ document.addEventListener("DOMContentLoaded", function () {
 		// logic to calculate the score
 		// if else + isTenpai();
 
-		console.log("Calculate score for selected tiles");
+		console.log("Calculate Button clicked");
 		showPopupMessage("incomplete func");
 	});
-});
 
-//
-document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("resetBtn").addEventListener("click", function () {
 		// todo
 		// logic to reset the options
-		console.log("Reset all options");
+		console.log("Reset Button clicked");
+		showPopupMessage("incomplete func");
+	});
+
+	document.getElementById("helpBtn").addEventListener("click", function () {
+		// todo
+		// highlight some area and shows guideline step by step
+
+		console.log("Help Button clicked");
 		showPopupMessage("incomplete func");
 	});
 });
