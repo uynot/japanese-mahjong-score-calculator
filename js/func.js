@@ -9,10 +9,10 @@ var westEnabled = false;
 	todo - tiles icon amount depends on this global variable
 */
 var chiPon = [
-	[1, 2, 3],
-	[2, 3, 4],
-	[1, 2, 3],
-	[2, 3, 4],
+	// [1, 2, 3],
+	// [2, 3, 4],
+	// [1, 2, 3],
+	// [2, 3, 4],
 ];
 var kan = [];
 var ankan = [];

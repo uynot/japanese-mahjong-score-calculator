@@ -102,13 +102,21 @@ button {
 	justify-content: center;
 	user-select: none;
 	margin: 10px;
+	height: 60px;
 }
-.flex-item-displayBarTile {
+.flex-item-displayBarTileLeft {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	margin: 10px 50px 10px 50px;
+	margin: 10px 30px 10px 10px;
+}
+.flex-item-displayBarTileRight {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin: 10px 10px 10px 30px;
 }
 /* for open tiles - 🀇🀈🀉🀊🀊🀋🀋🀌🀌🀌<--->"🀍"🀎🀏 */
 .displayBarSpaceBetweenConcealedAndOpens {
@@ -124,6 +132,23 @@ button {
 	margin-right: 0px;
 	margin-top: 8px;
 	transform: rotate(90deg);
+}
+
+.flex-item-doraBar {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 10px;
+	padding: 0px 0px 10px 0px;
+}
+
+.flex-item-doraBarTile {
+	display: grid;
+	grid-template-columns: repeat(10, 1fr);
+	gap: 2px;
+	margin: 10px;
 }
 
 .flex-item-tilesGrid {
@@ -151,10 +176,11 @@ button {
 .flex-item-handDoraTenpai {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	margin-left: 100%;
-	margin-right: 100%;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 .flex-item-chiPonKan,
@@ -315,6 +341,44 @@ button {
 	background-repeat: no-repeat;
 	background-position: center;
 	transition: all 0.05s ease;
+}
+.tile-flipped {
+	width: 24px;
+	height: 34px;
+	padding: 10px;
+	background-color: #b6795d;
+	border-radius: 7px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-size: 80%;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition: all 0.05s ease;
+}
+.tile-invisible {
+	width: 24px;
+	height: 34px;
+	padding: 10px;
+	background-color: #b6795d;
+	margin: 0px;
+	border-radius: 7px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-size: 80%;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition: all 0.05s ease;
+	opacity: 0;
 }
 
 .tile:hover {
