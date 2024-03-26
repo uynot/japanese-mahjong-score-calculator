@@ -66,10 +66,57 @@
 	transform: rotateX(180deg);
 }
 
+/* ron tile hover animation */
+.tenpai-button:hover .tenpai-icon {
+	animation: horizonal-move-reversed 0.5s forwards;
+}
+.tenpai-button:hover .tenpaiHand-icon {
+	animation: reveal-flip 0.5s 0.5s forwards;
+}
+.tenpai-button.activeTileType:hover .tenpaiHand-icon {
+	animation: active-reveal-flip 0.5s 0.5s forwards;
+}
+@keyframes horizonal-move-reversed {
+	from {
+		transform: translateX(30px);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+@keyframes reveal-flip {
+	from {
+		transform: rotateX(0deg);
+		background-color: #b6795d;
+	}
+	to {
+		transform: rotateX(180deg);
+		background-color: #d1a691;
+	}
+}
+@keyframes active-reveal-flip {
+	from {
+		transform: rotateX(0deg);
+		background-color: #d1a691;
+	}
+	to {
+		transform: rotateX(180deg);
+		background-color: beige;
+	}
+}
+
 /* chi and kan hover animation */
-.openTriple-button:hover span,
-.openQuad-button:hover span {
+.openTriple-button:hover .openTriplet-icon {
 	animation: horizonal-move 0.5s forwards;
+}
+.openTriple-button:hover .openTripletFromOpponent-icon {
+	animation: delay-slide-in 1s forwards;
+}
+.openQuad-button:hover .openQuad-icon {
+	animation: horizonal-move 0.5s forwards;
+}
+.openQuad-button:hover .openQuadFromOpponent-icon {
+	animation: delay-slide-in 1s forwards;
 }
 @keyframes horizonal-move {
 	from {
@@ -79,16 +126,42 @@
 		transform: translateX(0);
 	}
 }
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 100;
+	}
+}
+@keyframes delay-slide-in {
+	0% {
+		transform: translateX(-30px);
+		opacity: 0;
+	}
+	49% {
+		transform: translateX(-30px);
+		opacity: 0;
+	}
+	50% {
+		transform: translateX(-30px);
+		opacity: 100;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 100;
+	}
+}
 
 /* ankan hover animation */
 .concealedQuad-button:hover .concealedQuad-icon {
-	animation: ankan-horizonal-move 0.5s forwards, ankan-flip 0.5s 0.5s forwards;
+	animation: ankan-horizonal-move 0.5s forwards, conceal-flip 0.5s 0.5s forwards;
 }
 .concealedQuad-button:hover .faceUpConcealedQuad-icon {
 	animation: ankan-horizonal-move 0.5s forwards;
 }
 .concealedQuad-button.activeTileType:hover .concealedQuad-icon {
-	animation: active-ankan-horizonal-move 0.5s forwards, active-ankan-flip 0.5s 0.5s forwards;
+	animation: active-ankan-horizonal-move 0.5s forwards, active-conceal-flip 0.5s 0.5s forwards;
 }
 .concealedQuad-button.activeTileType:hover .faceUpConcealedQuad-icon {
 	animation: active-ankan-horizonal-move 0.5s forwards;
@@ -103,7 +176,7 @@
 		background-color: #d1a691;
 	}
 }
-@keyframes ankan-flip {
+@keyframes conceal-flip {
 	from {
 		transform: rotateX(0deg);
 		background-color: #d1a691;
@@ -123,7 +196,7 @@
 		background-color: beige;
 	}
 }
-@keyframes active-ankan-flip {
+@keyframes active-conceal-flip {
 	from {
 		transform: rotateX(0deg);
 		background-color: beige;
