@@ -343,10 +343,11 @@ button {
 	transition: all 0.05s ease;
 }
 .tile-flipped {
-	width: 24px;
-	height: 34px;
+	width: 20px;
+	height: 30px;
 	padding: 10px;
 	background-color: #b6795d;
+	border: 2px solid #ddd;
 	border-radius: 7px;
 	display: flex;
 	justify-content: center;
@@ -432,7 +433,7 @@ button {
 
 /*tile type button*/
 .concealed-button,
-.open-button,
+.openTriple-button,
 .concealedQuad-button,
 .openQuad-button,
 .dora-button,
@@ -536,11 +537,11 @@ button {
 	bottom: 0;
 }
 .tenpai-icon {
-	width: 20px;
-	height: 25px;
+	width: 25px;
+	height: 20px;
 	border-radius: 3px;
 	background-color: #d1a691;
-	margin: 0px 0px 0px 10px;
+	margin: 5px 0px 0px 0.5px;
 	bottom: 0;
 }
 
