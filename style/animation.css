@@ -105,7 +105,7 @@
 	}
 }
 
-/* chi and kan hover animation */
+/* chi/pon and kan hover animation */
 .openTriple-button:hover .openTriplet-icon {
 	animation: horizonal-move 0.5s forwards;
 }
