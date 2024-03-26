@@ -65,3 +65,31 @@
 .dora-button:hover .revealedDora-icon {
 	transform: rotateX(180deg);
 }
+
+/* ankan animation */
+.concealedQuad-button:hover .concealedQuad-icon {
+	animation: ankan-horizonal-move 0.1s forwards, ankan-flip 0.5s 0.3s forwards;
+}
+.concealedQuad-button:hover .faceUpConcealedQuad-icon {
+	animation: ankan-horizonal-move 0.1s forwards;
+}
+@keyframes ankan-horizonal-move {
+	from {
+		transform: translateX(-33px);
+		background-color: #d1a691;
+	}
+	to {
+		transform: translateX(0);
+		background-color: #d1a691;
+	}
+}
+@keyframes ankan-flip {
+	from {
+		transform: rotateX(0deg);
+		background-color: #d1a691;
+	}
+	to {
+		transform: rotateX(180deg);
+		background-color: #b6795d;
+	}
+}
