@@ -510,6 +510,26 @@ button {
 	bottom: 0;
 	display: inline-block;
 }
+.uraDora-icon {
+	width: 20px;
+	height: 25px;
+	border-radius: 3px;
+	background-color: #b6795d;
+	margin: 0.5px;
+	bottom: 0;
+	display: inline-block;
+	transition: transform 0.3s, background-color 0.3s;
+	transform-style: preserve-3d;
+}
+.revealedUraDora-icon {
+	width: 20px;
+	height: 25px;
+	border-radius: 3px;
+	background-color: #d1a691;
+	margin: 0.5px;
+	bottom: 0;
+	display: inline-block;
+}
 .tenpaiHand-icon {
 	width: 20px;
 	height: 25px;
