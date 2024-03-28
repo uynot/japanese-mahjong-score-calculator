@@ -60,11 +60,13 @@
 .revealedDora-icon {
 	transition: transform 0.5s;
 	transform-style: preserve-3d;
-	will-change: transform;
 }
 .dora-button:hover .revealedDora-icon {
 	transform: rotateX(180deg);
 }
+
+/* todo ura dora animation */
+/* flip to upside and disappear > pop up from buttom and opacity 0>100 and then flip dora*/
 
 /* ron tile hover animation */
 .tenpai-button:hover .tenpai-icon {
