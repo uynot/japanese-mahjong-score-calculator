@@ -154,16 +154,29 @@ document.getElementById("tsumoToggle").addEventListener("change", function () {
 	}
 });
 
+//
+document.getElementById("ippatsuToggle").addEventListener("change", function () {
+	const ippatsuLabel = document.querySelector(".label-ippatsu");
+
+	if (this.checked) {
+		//ippatsuLabel.textContent = "Tsumo On";
+		console.log("Ippatsu: Yes");
+	} else {
+		//ippatsuLabel.textContent = "Tsumo Off";
+		console.log("Ippatsu: No");
+	}
+});
+
 //todo
 //riichi button event
 document.getElementById("riichiToggle").addEventListener("change", function () {
 	const riichiLabel = document.querySelector(".label-riichi");
 
 	if (this.checked) {
-		//tsumoLabel.textContent = "Riichi On";
+		//riichiLabel.textContent = "Riichi On";
 		console.log("Riichi: Yes");
 	} else {
-		//tsumoLabel.textContent = "Riichi Off";
+		//riichiLabel.textContent = "Riichi Off";
 		console.log("Riichi: No");
 	}
 });

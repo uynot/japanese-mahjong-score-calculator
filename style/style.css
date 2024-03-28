@@ -173,47 +173,41 @@ button {
 	margin: 10px;
 }
 
-.flex-item-handDoraTenpai {
+.flex-item-ronOption {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	margin-left: 10px;
-	margin-right: 10px;
+	flex-grow: 1;
 }
 
+.flex-item-handRon,
+.flex-item-doraUraDora,
 .flex-item-chiPonKan,
 .flex-item-switches {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
-	margin-left: 100%;
-	margin-right: 100%;
+	flex-wrap: wrap;
+	flex-grow: 1;
 }
 
-.flex-item-kaze {
+.flex-item-kaze,
+.flex-item-honba {
 	display: flex;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	margin-left: 100%;
-	margin-right: 100%;
+	flex-wrap: wrap;
+	flex-grow: 1;
 }
 
 .flex-item-honbaItem {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-.flex-item-honba {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	margin-left: 100%;
-	margin-right: 100%;
 }
 
 .flex-item-tableWind,
@@ -259,6 +253,7 @@ button {
 .label-openQuad,
 .label-concealedQuad,
 .label-dora,
+.label-uraDora,
 .label-tenpai {
 	font-size: 16px;
 	color: #b6795d;
@@ -268,36 +263,22 @@ button {
 	margin-bottom: 5px;
 }
 
-.label-tsumo {
-	font-size: 16px;
-	color: #b6795d;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 200px;
-	/*margin: -10px 20px 0px 20px;*/
-}
-
-.label-agariyame {
-	font-size: 16px;
-	color: #b6795d;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 200px;
-	/*margin: -10px 20px 0px 20px;*/
-}
-
-/* todo - riichi effect */
+.label-agariyame,
+.label-ippatsu,
+.label-tsumo,
 .label-riichi {
 	font-size: 16px;
 	color: #b6795d;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 200px;
+	width: auto;
+	margin: 0px 20px 0px 20px;
+}
+
+/* todo - riichi effect */
+.label-riichi {
 	transition: opacity 0.3s, transform 0.3s;
-	/*margin: -10px 20px 0px 20px;*/
 }
 
 .label-honba {
@@ -437,6 +418,7 @@ button {
 .concealedQuad-button,
 .openQuad-button,
 .dora-button,
+.uraDora-button,
 .tenpai-button {
 	border: 2px solid #b6795d;
 	background-color: transparent;

@@ -94,71 +94,82 @@
 
 			<div class="flex-item flex-item-ronTypes">
 				<div class="flex-item-tileTypes">
-					<div class="flex-item-handDoraTenpai">
-						<div class="label-container">
-							<span class="label-concealed">Hand</span>
-							<!-- todo - write javascript to generate icons depends on how many tiles left : 13 - chi/pon - kan - ankan = (?) -->
-							<button id="defaultTileType" class="concealed-button toggle-tileType hoverShadow" onclick="console.log('TEST: concealed')">
-								<!-- tile span spawn by js -->
-							</button>
-						</div>
-						<!-- todo - dora and tenpai-->
-						<div class="label-container">
-							<span class="label-concealed">Dora</span>
-							<button class="dora-button toggle-tileType hoverShadow" onclick="console.log('TEST: dora')">
-								<span class="dora-icon"></span>
-								<span class="dora-icon"></span>
-								<span class="dora-icon"></span>
-								<span class="dora-icon"></span>
-								<span class="revealedDora-icon"></span>
-								<span class="dora-icon"></span>
-								<span class="dora-icon"></span>
-							</button>
-						</div>
-						<div class="label-container">
-							<span class="label-concealed">Ron Tile</span>
-							<button class="tenpai-button toggle-tileType hoverShadow" onclick="console.log('TEST: tenpai')">
+					<div class="flex-item-ronOption">
+						<div class="flex-item-handRon">
+							<div class="label-container">
+								<span class="label-concealed">Hand</span>
 								<!-- todo - write javascript to generate icons depends on how many tiles left : 13 - chi/pon - kan - ankan = (?) -->
-							</button>
+								<button id="defaultTileType" class="concealed-button toggle-tileType hoverShadow" onclick="console.log('TEST: concealed')">
+									<!-- tile span spawn by js -->
+								</button>
+							</div>
+							<div class="label-container">
+								<span class="label-concealed">Ron Tile</span>
+								<button class="tenpai-button toggle-tileType hoverShadow" onclick="console.log('TEST: tenpai')">
+									<!-- todo - write javascript to generate icons depends on how many tiles left : 13 - chi/pon - kan - ankan = (?) -->
+								</button>
+							</div>
 						</div>
 
-						<div class="label-container">
-							<span class="label-concealed">Chi/Pon</span>
-							<button class="openTriple-button toggle-tileType hoverShadow" onclick="console.log('TEST: open')">
-								<span class="openTripletFromOpponent-icon"></span>
-								<span class="openTriplet-icon"></span>
-								<span class="openTriplet-icon"></span>
-							</button>
+						<!-- todo - dora and tenpai-->
+						<div class="flex-item-doraUraDora">
+							<div class="label-container">
+								<span class="label-dora">Dora</span>
+								<button class="dora-button toggle-tileType hoverShadow" onclick="console.log('TEST: dora')">
+									<span class="dora-icon"></span>
+									<span class="dora-icon"></span>
+									<span class="dora-icon"></span>
+									<span class="dora-icon"></span>
+									<span class="revealedDora-icon"></span>
+									<span class="dora-icon"></span>
+									<span class="dora-icon"></span>
+								</button>
+							</div>
+							<div class="label-container">
+								<span class="label-uraDora">Ura Dora</span>
+								<button class="uraDora-button toggle-tileType hoverShadow" onclick="console.log('TEST: ura dora')">
+									<span class="dora-icon"></span>
+									<span class="dora-icon"></span>
+									<span class="dora-icon"></span>
+									<span class="dora-icon"></span>
+									<span class="revealedDora-icon"></span>
+									<span class="dora-icon"></span>
+									<span class="dora-icon"></span>
+								</button>
+							</div>
 						</div>
-						<div class="label-container">
-							<span class="label-concealed">Kan</span>
-							<button class="openQuad-button toggle-tileType hoverShadow" onclick="console.log('TEST: open quad')">
-								<span class="openQuadFromOpponent-icon"></span>
-								<span class="openQuad-icon"></span>
-								<span class="openQuad-icon"></span>
-								<span class="openQuad-icon"></span>
-							</button>
-						</div>
-						<div class="label-container">
-							<span class="label-concealed">Ankan</span>
-							<button class="concealedQuad-button toggle-tileType hoverShadow" onclick="console.log('TEST: concealed quad')">
-								<span class="concealedQuad-icon"></span>
-								<span class="faceUpConcealedQuad-icon"></span>
-								<span class="faceUpConcealedQuad-icon"></span>
-								<span class="concealedQuad-icon"></span>
-							</button>
+
+						<div class="flex-item-chiPonKan">
+							<div class="label-container">
+								<span class="label-concealed">Chi/Pon</span>
+								<button class="openTriple-button toggle-tileType hoverShadow" onclick="console.log('TEST: open')">
+									<span class="openTripletFromOpponent-icon"></span>
+									<span class="openTriplet-icon"></span>
+									<span class="openTriplet-icon"></span>
+								</button>
+							</div>
+							<div class="label-container">
+								<span class="label-concealed">Kan</span>
+								<button class="openQuad-button toggle-tileType hoverShadow" onclick="console.log('TEST: open quad')">
+									<span class="openQuadFromOpponent-icon"></span>
+									<span class="openQuad-icon"></span>
+									<span class="openQuad-icon"></span>
+									<span class="openQuad-icon"></span>
+								</button>
+							</div>
+							<div class="label-container">
+								<span class="label-concealed">Ankan</span>
+								<button class="concealedQuad-button toggle-tileType hoverShadow" onclick="console.log('TEST: concealed quad')">
+									<span class="concealedQuad-icon"></span>
+									<span class="faceUpConcealedQuad-icon"></span>
+									<span class="faceUpConcealedQuad-icon"></span>
+									<span class="concealedQuad-icon"></span>
+								</button>
+							</div>
 						</div>
 					</div>
 
 					<div class="flex-item-switches">
-						<div class="label-container">
-							<span class="label-tsumo">Tsumo</span>
-							<label class="switch">
-								<!-- todo - tsumo button event -->
-								<input type="checkbox" id="tsumoToggle" />
-								<span class="slider round"></span>
-							</label>
-						</div>
 						<div class="label-container">
 							<span class="label-riichi">Riichi</span>
 							<label class="switch">
@@ -168,40 +179,33 @@
 							</label>
 						</div>
 						<div class="label-container">
+							<span class="label-ippatsu">Ippatsu</span>
+							<label class="switch">
+								<input type="checkbox" id="ippatsuToggle" />
+								<span class="slider round"></span>
+							</label>
+						</div>
+						<div class="label-container">
+							<span class="label-tsumo">Tsumo</span>
+							<label class="switch">
+								<input type="checkbox" id="tsumoToggle" />
+								<span class="slider round"></span>
+							</label>
+						</div>
+						<div class="label-container">
 							<span class="label-agariyame">West Ext</span>
 							<label class="switch">
 								<input type="checkbox" id="westExtToggle" />
 								<span class="slider round"></span>
 							</label>
 						</div>
-						<!-- <div class="label-container">
-							<span class="label-agariyame">搶桿</span>
-							<label class="switch">
-								<input type="checkbox" id="steelKanToggle" />
-								<span class="slider round"></span>
-							</label>
-						</div>
-						<div class="label-container">
-							<span class="label-agariyame">海底/河底</span>
-							<label class="switch">
-								<input type="checkbox" id="steelKanToggle" />
-								<span class="slider round"></span>
-							</label>
-						</div>
-						<div class="label-container">
-							<span class="label-agariyame">一發</span>
-							<label class="switch">
-								<input type="checkbox" id="steelKanToggle" />
-								<span class="slider round"></span>
-							</label>
-						</div>
-						<div class="label-container">
-							<span class="label-agariyame">嶺上</span>
-							<label class="switch">
-								<input type="checkbox" id="steelKanToggle" />
-								<span class="slider round"></span>
-							</label>
-						</div> -->
+						<!--
+							搶桿
+							海底
+							河底
+							一發
+							嶺上
+						-->
 					</div>
 
 					<div class="flex-item-kaze">
