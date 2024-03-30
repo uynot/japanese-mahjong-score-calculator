@@ -555,7 +555,8 @@ button {
 .activeTileType .concealed-icon,
 .activeTileType .concealedQuad-icon,
 .activeTileType .tenpaiHand-icon,
-.activeTileType .dora-icon {
+.activeTileType .dora-icon,
+.activeTileType .uraDora-icon {
 	background-color: #d1a691;
 }
 
