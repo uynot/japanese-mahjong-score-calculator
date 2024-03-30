@@ -59,25 +59,26 @@
 			<div class="flex-item flex-item-doraBar">
 				<div class="flex-item-doraBarTile">
 					<div class="tile-flipped"></div>
-					<div class="tile-flipped"></div>
-					<div class="tile-flipped"></div>
-					<div class="tile-flipped"></div>
-					<div class="tile" data-tile-type="sou1" style="background-image: url('/img/light/sou1.svg')"></div>
-					<div class="tile-flipped"></div>
-					<div class="tile-invisible"></div>
-					<div class="tile-invisible"></div>
-					<div class="tile-invisible"></div>
-					<div class="tile-invisible"></div>
-					<div class="tile-flipped"></div>
-					<div class="tile-flipped"></div>
-					<div class="tile-flipped"></div>
-					<div class="tile-flipped"></div>
-					<div class="tile-flipped"></div>
-					<div class="tile-flipped"></div>
-					<div class="tile-flipped"></div>
+					<div id="dora4" class="tile-flipped"></div>
+					<div id="dora3" class="tile-flipped"></div>
+					<div id="dora2" class="tile-flipped"></div>
+					<div id="dora1" class="tile" data-tile-type="" style="background-image: url('/img/light/sou1.svg')"></div>
 					<div class="tile-flipped"></div>
 					<div class="tile-invisible"></div>
 					<div class="tile-invisible"></div>
+					<div class="tile-invisible"></div>
+					<div class="tile-invisible"></div>
+					<!-- ura dora -->
+					<div id="uraDora" class="tile-flipped disabled"></div>
+					<div id="uraDora4" class="tile-flipped disabled"></div>
+					<div id="uraDora3" class="tile-flipped disabled"></div>
+					<div id="uraDora2" class="tile-flipped disabled"></div>
+					<div id="uraDora1" class="tile-flipped disabled"></div>
+					<div id="uraDora" class="tile-flipped disabled"></div>
+					<div id="uraDora" class="tile-flipped disabled"></div>
+					<div id="uraDora" class="tile-flipped disabled"></div>
+					<div id="uraDora" class="tile-invisible"></div>
+					<div id="uraDora" class="tile-invisible"></div>
 				</div>
 			</div>
 
@@ -127,7 +128,7 @@
 							</div>
 							<div class="label-container">
 								<span class="label-uraDora">Ura Dora</span>
-								<button class="uraDora-button toggle-tileType hoverShadow" onclick="console.log('TEST: ura dora')">
+								<button id="uraDoraBtn" class="uraDora-button toggle-tileType hoverShadow disabled" onclick="console.log('TEST: ura dora')">
 									<span class="uraDora-icon"></span>
 									<span class="uraDora-icon"></span>
 									<span class="uraDora-icon"></span>
@@ -142,7 +143,7 @@
 						<div class="flex-item-chiPonKan">
 							<div class="label-container">
 								<span class="label-concealed">Chi/Pon</span>
-								<button class="openTriple-button toggle-tileType hoverShadow" onclick="console.log('TEST: open')">
+								<button id="chiPonBtn" class="openTriple-button toggle-tileType hoverShadow" onclick="console.log('TEST: open')">
 									<span class="openTripletFromOpponent-icon"></span>
 									<span class="openTriplet-icon"></span>
 									<span class="openTriplet-icon"></span>
@@ -150,7 +151,7 @@
 							</div>
 							<div class="label-container">
 								<span class="label-concealed">Kan</span>
-								<button class="openQuad-button toggle-tileType hoverShadow" onclick="console.log('TEST: open quad')">
+								<button id="kanBtn" class="openQuad-button toggle-tileType hoverShadow" onclick="console.log('TEST: open quad')">
 									<span class="openQuadFromOpponent-icon"></span>
 									<span class="openQuad-icon"></span>
 									<span class="openQuad-icon"></span>
