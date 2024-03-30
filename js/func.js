@@ -1,6 +1,7 @@
 //init global var
 var popupTimeout;
 var zeroHonbaTimeout;
+var zeroOtherRiichiTimeout;
 var activeTableWind = 0;
 var westEnabled = false;
 
@@ -18,6 +19,7 @@ var chiPon = [
 var kan = [];
 var ankan = [];
 var honba = 0;
+var otherRiichi = 0;
 
 //spawn multiple concealed tile as button icon
 function generateBtnIcon() {
@@ -230,46 +232,77 @@ document.getElementById("tsumoToggle").addEventListener("change", function () {
 	}
 });
 
-function triggerShakeAnimation() {
-	let honbaLabel = document.getElementById("honbaTime");
-	honbaLabel.classList.remove("shake");
-	void honbaLabel.offsetWidth;
-	honbaLabel.classList.add("shake");
-
-	clearTimeout(zeroHonbaTimeout);
-	zeroHonbaTimeout = setTimeout(() => {
+//todo - make generic for otherRiichi
+function triggerShakeAnimation(isHonba) {
+	if (isHonba) {
+		let honbaLabel = document.getElementById("honbaTimes");
 		honbaLabel.classList.remove("shake");
-	}, 1000);
+		void honbaLabel.offsetWidth;
+		honbaLabel.classList.add("shake");
+
+		clearTimeout(zeroHonbaTimeout);
+		zeroHonbaTimeout = setTimeout(() => {
+			honbaLabel.classList.remove("shake");
+		}, 1000);
+	} else {
+		let otherRiichiPLabel = document.getElementById("otherRiichiTimes");
+		otherRiichiPLabel.classList.remove("shake");
+		void otherRiichiPLabel.offsetWidth;
+		otherRiichiPLabel.classList.add("shake");
+
+		clearTimeout(zeroOtherRiichiTimeout);
+		zeroOtherRiichiTimeout = setTimeout(() => {
+			otherRiichiPLabel.classList.remove("shake");
+		}, 1000);
+	}
 }
 
-//honba +- click event
+//honba & otherRiichi +- click event
 document.addEventListener("DOMContentLoaded", function () {
-	function updateHonbaLabel(delta) {
-		var honbaLabel = document.querySelector(".label-honbaTimes");
-		var currentHonba = parseInt(honbaLabel.textContent.split("x")[1]) || 0;
-		var newHonba = currentHonba + delta;
+	function updateLabel(delta, isHonba) {
+		if (isHonba) {
+			var honbaLabel = document.querySelector(".label-honbaTimes");
+			var currentHonba = parseInt(honbaLabel.textContent.split("x")[1]) || 0;
+			var newHonba = currentHonba + delta;
 
-		if (newHonba < 0) {
-			newHonba = 0;
-			triggerShakeAnimation();
-		} else if (newHonba > 99) {
-			newHonba = 99;
-			triggerShakeAnimation();
-			//showPopupMessage("Honba must be less than 99");
+			if (newHonba < 0) {
+				newHonba = 0;
+				triggerShakeAnimation(true);
+			} else if (newHonba > 99) {
+				newHonba = 99;
+				triggerShakeAnimation(true);
+				//showPopupMessage("Honba must be less than 99");
+			} else {
+				document.getElementById("honbaTimes").textContent = " x " + newHonba;
+			}
+			honba = newHonba;
 		} else {
-			document.getElementById("honbaTime").textContent = " x " + newHonba;
+			var otherRiichiPlayer = document.querySelector(".label-otherRiichiTimes");
+			var currentOtherRiichi = parseInt(otherRiichiPlayer.textContent.split("x")[1]) || 0;
+			var newOtherRiichi = currentOtherRiichi + delta;
+
+			if (newOtherRiichi < 0) {
+				newOtherRiichi = 0;
+				triggerShakeAnimation(false);
+			} else if (newOtherRiichi > 3) {
+				newOtherRiichi = 3;
+				triggerShakeAnimation(false);
+				//showPopupMessage("Honba must be less than 3");
+			} else {
+				document.getElementById("otherRiichiTimes").textContent = " x " + newOtherRiichi;
+			}
+			otherRiichi = newOtherRiichi;
 		}
-		honba = newHonba;
 	}
 
 	var honbaAddButton = document.querySelector(".honbaAdd .honbaAdjustBtn");
 	honbaAddButton.addEventListener("click", function () {
-		updateHonbaLabel(1);
+		updateLabel(1, true);
 	});
 
 	var honbaDropButton = document.querySelector(".honbaDrop .honbaAdjustBtn");
 	honbaDropButton.addEventListener("click", function () {
-		updateHonbaLabel(-1);
+		updateLabel(-1, true);
 	});
 
 	var honbaResetButton = document.querySelector(".honbaReset .honbaAdjustBtn");
@@ -278,9 +311,31 @@ document.addEventListener("DOMContentLoaded", function () {
 		var currentHonba = parseInt(honbaLabel.textContent.split("x")[1]) || 0;
 
 		if (currentHonba != 0) {
-			updateHonbaLabel(-honba);
+			updateLabel(-honba, true);
 		} else {
-			triggerShakeAnimation();
+			triggerShakeAnimation(true);
+		}
+	});
+
+	var otherRiichiPlayerAddButton = document.querySelector(".otherRiichiAdd .otherRiichiAdjustBtn");
+	otherRiichiPlayerAddButton.addEventListener("click", function () {
+		updateLabel(1, false);
+	});
+
+	var otherRiichiDropButton = document.querySelector(".otherRiichiDrop .otherRiichiAdjustBtn");
+	otherRiichiDropButton.addEventListener("click", function () {
+		updateLabel(-1, false);
+	});
+
+	var otherRiichiResetButton = document.querySelector(".otherRiichiReset .otherRiichiAdjustBtn");
+	otherRiichiResetButton.addEventListener("click", function () {
+		var otherRiichiLabel = document.querySelector(".label-otherRiichiTimes");
+		var currentOtherRiichi = parseInt(otherRiichiLabel.textContent.split("x")[1]) || 0;
+
+		if (currentOtherRiichi != 0) {
+			updateLabel(-otherRiichi, false);
+		} else {
+			triggerShakeAnimation(false);
 		}
 	});
 });
