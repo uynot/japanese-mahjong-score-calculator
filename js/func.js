@@ -1,6 +1,7 @@
 //init global var
 var popupTimeout;
 var zeroHonbaTimeout;
+var zeroOtherRiichiTimeout;
 var activeTableWind = 0;
 var westEnabled = false;
 
@@ -18,6 +19,7 @@ var chiPon = [
 var kan = [];
 var ankan = [];
 var honba = 0;
+var otherRiichi = 0;
 
 //spawn multiple concealed tile as button icon
 function generateBtnIcon() {
@@ -159,9 +161,11 @@ document.getElementById("riichiToggle").addEventListener("change", function () {
 //disable ura dora options in riichi mode
 document.addEventListener("DOMContentLoaded", function () {
 	const riichiToggle = document.getElementById("riichiToggle");
+	const ippatsuToggle = document.getElementById("ippatsuToggle");
 	const uraDoraBtn = document.getElementById("uraDoraBtn");
 	const chiPonBtn = document.getElementById("chiPonBtn");
 	const kanBtn = document.getElementById("kanBtn");
+	const ippatsuSection = document.getElementById("ippatsu");
 
 	function disableUraDoraDisplay(isDisable) {
 		var uraDoraIdList = ["uraDora", "uraDora1", "uraDora2", "uraDora3", "uraDora4"];
@@ -184,13 +188,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			//todo - remove chi/pon/kan in display bar
 			uraDoraBtn.classList.remove("disabled");
+			ippatsuSection.classList.remove("disabled");
 			chiPonBtn.classList.add("disabled");
 			kanBtn.classList.add("disabled");
 		} else {
 			//todo - remove all selected ura dora in second line display bar
 			disableUraDoraDisplay(false);
+			ippatsuToggle.checked = false;
 
 			uraDoraBtn.classList.add("disabled");
+			ippatsuSection.classList.add("disabled");
 			chiPonBtn.classList.remove("disabled");
 			kanBtn.classList.remove("disabled");
 		}
@@ -225,46 +232,77 @@ document.getElementById("tsumoToggle").addEventListener("change", function () {
 	}
 });
 
-function triggerShakeAnimation() {
-	let honbaLabel = document.getElementById("honbaTime");
-	honbaLabel.classList.remove("shake");
-	void honbaLabel.offsetWidth;
-	honbaLabel.classList.add("shake");
-
-	clearTimeout(zeroHonbaTimeout);
-	zeroHonbaTimeout = setTimeout(() => {
+//todo - make generic for otherRiichi
+function triggerShakeAnimation(isHonba) {
+	if (isHonba) {
+		let honbaLabel = document.getElementById("honbaTimes");
 		honbaLabel.classList.remove("shake");
-	}, 1000);
+		void honbaLabel.offsetWidth;
+		honbaLabel.classList.add("shake");
+
+		clearTimeout(zeroHonbaTimeout);
+		zeroHonbaTimeout = setTimeout(() => {
+			honbaLabel.classList.remove("shake");
+		}, 1000);
+	} else {
+		let otherRiichiPLabel = document.getElementById("otherRiichiTimes");
+		otherRiichiPLabel.classList.remove("shake");
+		void otherRiichiPLabel.offsetWidth;
+		otherRiichiPLabel.classList.add("shake");
+
+		clearTimeout(zeroOtherRiichiTimeout);
+		zeroOtherRiichiTimeout = setTimeout(() => {
+			otherRiichiPLabel.classList.remove("shake");
+		}, 1000);
+	}
 }
 
-//honba +- click event
+//honba & otherRiichi +- click event
 document.addEventListener("DOMContentLoaded", function () {
-	function updateHonbaLabel(delta) {
-		var honbaLabel = document.querySelector(".label-honbaTimes");
-		var currentHonba = parseInt(honbaLabel.textContent.split("x")[1]) || 0;
-		var newHonba = currentHonba + delta;
+	function updateLabel(delta, isHonba) {
+		if (isHonba) {
+			var honbaLabel = document.querySelector(".label-honbaTimes");
+			var currentHonba = parseInt(honbaLabel.textContent.split("x")[1]) || 0;
+			var newHonba = currentHonba + delta;
 
-		if (newHonba < 0) {
-			newHonba = 0;
-			triggerShakeAnimation();
-		} else if (newHonba > 99) {
-			newHonba = 99;
-			triggerShakeAnimation();
-			//showPopupMessage("Honba must be less than 99");
+			if (newHonba < 0) {
+				newHonba = 0;
+				triggerShakeAnimation(true);
+			} else if (newHonba > 99) {
+				newHonba = 99;
+				triggerShakeAnimation(true);
+				//showPopupMessage("Honba must be less than 99");
+			} else {
+				document.getElementById("honbaTimes").textContent = " x " + newHonba;
+			}
+			honba = newHonba;
 		} else {
-			document.getElementById("honbaTime").textContent = " x " + newHonba;
+			var otherRiichiPlayer = document.querySelector(".label-otherRiichiTimes");
+			var currentOtherRiichi = parseInt(otherRiichiPlayer.textContent.split("x")[1]) || 0;
+			var newOtherRiichi = currentOtherRiichi + delta;
+
+			if (newOtherRiichi < 0) {
+				newOtherRiichi = 0;
+				triggerShakeAnimation(false);
+			} else if (newOtherRiichi > 3) {
+				newOtherRiichi = 3;
+				triggerShakeAnimation(false);
+				//showPopupMessage("Honba must be less than 3");
+			} else {
+				document.getElementById("otherRiichiTimes").textContent = " x " + newOtherRiichi;
+			}
+			otherRiichi = newOtherRiichi;
 		}
-		honba = newHonba;
 	}
 
 	var honbaAddButton = document.querySelector(".honbaAdd .honbaAdjustBtn");
 	honbaAddButton.addEventListener("click", function () {
-		updateHonbaLabel(1);
+		updateLabel(1, true);
 	});
 
 	var honbaDropButton = document.querySelector(".honbaDrop .honbaAdjustBtn");
 	honbaDropButton.addEventListener("click", function () {
-		updateHonbaLabel(-1);
+		updateLabel(-1, true);
 	});
 
 	var honbaResetButton = document.querySelector(".honbaReset .honbaAdjustBtn");
@@ -273,9 +311,31 @@ document.addEventListener("DOMContentLoaded", function () {
 		var currentHonba = parseInt(honbaLabel.textContent.split("x")[1]) || 0;
 
 		if (currentHonba != 0) {
-			updateHonbaLabel(-honba);
+			updateLabel(-honba, true);
 		} else {
-			triggerShakeAnimation();
+			triggerShakeAnimation(true);
+		}
+	});
+
+	var otherRiichiPlayerAddButton = document.querySelector(".otherRiichiAdd .otherRiichiAdjustBtn");
+	otherRiichiPlayerAddButton.addEventListener("click", function () {
+		updateLabel(1, false);
+	});
+
+	var otherRiichiDropButton = document.querySelector(".otherRiichiDrop .otherRiichiAdjustBtn");
+	otherRiichiDropButton.addEventListener("click", function () {
+		updateLabel(-1, false);
+	});
+
+	var otherRiichiResetButton = document.querySelector(".otherRiichiReset .otherRiichiAdjustBtn");
+	otherRiichiResetButton.addEventListener("click", function () {
+		var otherRiichiLabel = document.querySelector(".label-otherRiichiTimes");
+		var currentOtherRiichi = parseInt(otherRiichiLabel.textContent.split("x")[1]) || 0;
+
+		if (currentOtherRiichi != 0) {
+			updateLabel(-otherRiichi, false);
+		} else {
+			triggerShakeAnimation(false);
 		}
 	});
 });
@@ -329,7 +389,7 @@ function showPopupMessage(text) {
 	var popupMessage = document.getElementById("popupMessage");
 	var messageText = popupMessage.querySelector(".popupMessageText");
 
-	messageText.textContent = text || "Error occurred";
+	messageText.textContent = text || "Error occurred: text content not found";
 
 	clearTimeout(popupTimeout);
 
@@ -347,30 +407,32 @@ function showPopupMessage(text) {
 //Calculate Button
 document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("calculateBtn").addEventListener("click", function () {
+		console.log("Calculate Button clicked");
+		showPopupMessage("incomplete func");
+
 		// todo
-		// logic to calculate the score
+		// logic to calculate the score:
 		// check if riichi = true, did user choose any ura dora?
+		// check if !riichi, is ippatsu checked?, shouldn't be checked
 		// check if !riichi, is there any unnecessary ura dora
 		// check !west ext = no west round
 		// if else + isTenpai();
-
-		console.log("Calculate Button clicked");
-		showPopupMessage("incomplete func");
 	});
 
 	document.getElementById("resetBtn").addEventListener("click", function () {
-		// todo
-		// logic to reset the options
 		console.log("Reset Button clicked");
 		showPopupMessage("incomplete func");
+
+		// todo
+		// logic to reset the options
 	});
 
 	document.getElementById("helpBtn").addEventListener("click", function () {
-		// todo
-		// highlight some area and shows guideline step by step
-
 		console.log("Help Button clicked");
 		showPopupMessage("incomplete func");
+
+		// todo
+		// highlight some area and shows guideline step by step
 	});
 });
 

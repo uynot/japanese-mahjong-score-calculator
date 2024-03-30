@@ -198,13 +198,14 @@ button {
 .flex-item-honba {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 	flex-wrap: wrap;
 	flex-grow: 1;
 }
 
-.flex-item-honbaItem {
+.flex-item-honbaItem,
+.flex-item-otherRiichiPlayers {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -266,7 +267,11 @@ button {
 .label-agariyame,
 .label-ippatsu,
 .label-tsumo,
-.label-riichi {
+.label-riichi,
+.label-rinshan,
+.label-chankan,
+.label-haite,
+.label-houte {
 	font-size: 16px;
 	color: #b6795d;
 	display: flex;
@@ -281,7 +286,8 @@ button {
 	transition: opacity 0.3s, transform 0.3s;
 }
 
-.label-honba {
+.label-honba,
+.label-otherRiichiPlayers {
 	font-size: 16px;
 	color: #b6795d;
 	display: flex;
@@ -291,7 +297,8 @@ button {
 	margin: 10px 0px 10px 0px;
 }
 
-.label-honbaTimes {
+.label-honbaTimes,
+.label-otherRiichiTimes {
 	font-size: 16px;
 	color: #b6795d;
 	display: flex;
@@ -670,28 +677,39 @@ input:checked + .slider:before {
 	width: 100px;
 	height: 10px;
 }
+.otherRiichi-image {
+	transform: scale(1.5) rotate(0deg);
+	transform-origin: center;
+	margin: 10px 30px 10px 30px;
+	width: 100px;
+	height: 10px;
+}
 
-.honbaAdd {
+.honbaAdd,
+.otherRiichiAdd {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 0px 5px 0px 5px;
 }
-.honbaDrop {
+.honbaDrop,
+.otherRiichiDrop {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 0px 0px 0px 0px;
 	text-align: center;
 }
-.honbaReset {
+.honbaReset,
+.otherRiichiReset {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 0px 0px 0px 5px;
 	text-align: center;
 }
-.honbaAdjustBtn {
+.honbaAdjustBtn,
+.otherRiichiAdjustBtn {
 	display: flex;
 	justify-content: center;
 	align-items: center;

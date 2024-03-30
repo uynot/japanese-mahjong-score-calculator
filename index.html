@@ -181,7 +181,7 @@
 						</div>
 						<div class="label-container">
 							<span class="label-ippatsu">Ippatsu</span>
-							<label class="switch">
+							<label id="ippatsu" class="switch disabled">
 								<input type="checkbox" id="ippatsuToggle" />
 								<span class="slider round"></span>
 							</label>
@@ -194,19 +194,37 @@
 							</label>
 						</div>
 						<div class="label-container">
-							<span class="label-agariyame">West Ext</span>
-							<label class="switch">
-								<input type="checkbox" id="westExtToggle" />
+							<span class="label-rinshan">Rinshan</span>
+							<label id="rinshan" class="switch disabled">
+								<!-- todo - enable when display bar has KAN-->
+								<input type="checkbox" id="rinshanToggle" />
 								<span class="slider round"></span>
 							</label>
 						</div>
-						<!--
-							搶桿
-							海底
-							河底
-							一發
-							嶺上
-						-->
+						<div class="label-container">
+							<!-- todo - tsumo disable = this enable -->
+							<span class="label-chankan">Chankan</span>
+							<label id="chankan" class="switch">
+								<input type="checkbox" id="chankanToggle" />
+								<span class="slider round"></span>
+							</label>
+						</div>
+						<div class="label-container">
+							<span class="label-haite">Haite</span>
+							<!-- todo - tsumo disabled = this disabled -->
+							<label id="haite" class="switch disabled">
+								<input type="checkbox" id="haiteToggle" />
+								<span class="slider round"></span>
+							</label>
+						</div>
+						<div class="label-container">
+							<!-- todo - tsumo disable = this enable -->
+							<span class="label-houte">Houte</span>
+							<label class="switch">
+								<input type="checkbox" id="houteToggle" />
+								<span class="slider round"></span>
+							</label>
+						</div>
 					</div>
 
 					<div class="flex-item-kaze">
@@ -228,7 +246,6 @@
 								</div> -->
 							</div>
 						</div>
-
 						<div class="label-container">
 							<span class="label-playerWind">Seat Wind</span>
 							<div class="flex-item-playerWind">
@@ -246,6 +263,13 @@
 								</div>
 							</div>
 						</div>
+						<div class="label-container">
+							<span class="label-agariyame">West Ext</span>
+							<label class="switch">
+								<input type="checkbox" id="westExtToggle" />
+								<span class="slider round"></span>
+							</label>
+						</div>
 					</div>
 
 					<div class="flex-item-honba">
@@ -253,7 +277,7 @@
 							<span class="label-honba">Continuous Dealership</span>
 							<div class="flex-item-honbaItem">
 								<img class="honba-image" src="img/honba/100.svg" />
-								<span id="honbaTime" class="label-honbaTimes"> x 0</span>
+								<span id="honbaTimes" class="label-honbaTimes"> x 0</span>
 								<div class="honbaAdd">
 									<button class="honbaAdjustBtn hoverShadow">+</button>
 								</div>
@@ -262,6 +286,23 @@
 								</div>
 								<div class="honbaReset">
 									<button class="honbaAdjustBtn hoverShadow">0</button>
+								</div>
+							</div>
+						</div>
+						<div class="label-container">
+							<!-- todo -->
+							<span class="label-otherRiichiPlayers">Other Riichi Players</span>
+							<div class="flex-item-otherRiichiPlayers">
+								<img class="otherRiichi-image" src="img/honba/1000.svg" />
+								<span id="otherRiichiTimes" class="label-otherRiichiTimes"> x 0</span>
+								<div class="otherRiichiAdd">
+									<button class="otherRiichiAdjustBtn hoverShadow">+</button>
+								</div>
+								<div class="otherRiichiDrop">
+									<button class="otherRiichiAdjustBtn hoverShadow">-</button>
+								</div>
+								<div class="otherRiichiReset">
+									<button class="otherRiichiAdjustBtn hoverShadow">0</button>
 								</div>
 							</div>
 						</div>
