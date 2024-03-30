@@ -6,7 +6,7 @@ var westEnabled = false;
 
 //calucation global var
 /*
-	todo - tiles icon amount depends on this global variable
+	todo - make all global var into a object and fix relevant func
 */
 var chiPon = [
 	// [1, 2, 3],
@@ -28,7 +28,8 @@ function generateBtnIcon() {
 	console.log("kanTiles: " + kanTiles);
 	var ankanTiles = !ankan ? 0 : ankan.length * 3; // count 4 as 3
 	console.log("ankanTiles: " + ankanTiles);
-	var revealedTiles = tileAmount - chiPonTiles - kanTiles - ankanTiles;
+	// var revealedTiles = tileAmount - chiPonTiles - kanTiles - ankanTiles;
+	var revealedTiles = 13;
 	for (let i = 0; i < revealedTiles; i++) {
 		const span = document.createElement("span");
 		span.classList.add("concealed-icon");
@@ -265,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 
 			//todo
-			// revamp - change to click => show in upper area instead of selection
+			// revamp - change to click => show in upper display bar instead of selection
 			/*tile.addEventListener("click", function () {
 				if (this.classList.contains("selected")) {
 					this.classList.remove("selected");
