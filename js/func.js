@@ -5,8 +5,9 @@ var activeTableWind = 0;
 var westEnabled = false;
 
 //calucation global var
+//todo - make sure all global var is unique
 /*
-	todo - tiles icon amount depends on this global variable
+	todo - make all global var into a object and fix relevant func
 */
 var chiPon = [
 	// [1, 2, 3],
@@ -28,7 +29,8 @@ function generateBtnIcon() {
 	console.log("kanTiles: " + kanTiles);
 	var ankanTiles = !ankan ? 0 : ankan.length * 3; // count 4 as 3
 	console.log("ankanTiles: " + ankanTiles);
-	var revealedTiles = tileAmount - chiPonTiles - kanTiles - ankanTiles;
+	// var revealedTiles = tileAmount - chiPonTiles - kanTiles - ankanTiles;
+	var revealedTiles = 13;
 	for (let i = 0; i < revealedTiles; i++) {
 		const span = document.createElement("span");
 		span.classList.add("concealed-icon");
@@ -141,20 +143,62 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //todo
-//tsumo button event
-document.getElementById("tsumoToggle").addEventListener("change", function () {
-	const tsumoLabel = document.querySelector(".label-tsumo");
-
+//riichi button event
+document.getElementById("riichiToggle").addEventListener("change", function () {
+	const riichiLabel = document.querySelector(".label-riichi");
 	if (this.checked) {
-		//tsumoLabel.textContent = "Tsumo On";
-		console.log("Tsumo: Yes");
+		//riichiLabel.textContent = "Riichi On";
+		console.log("Riichi: Yes");
 	} else {
-		//tsumoLabel.textContent = "Tsumo Off";
-		console.log("Tsumo: No");
+		//riichiLabel.textContent = "Riichi Off";
+		console.log("Riichi: No");
 	}
 });
 
-//
+//todo - remove tiles in display bar with chi/pon/kan
+//disable ura dora options in riichi mode
+document.addEventListener("DOMContentLoaded", function () {
+	const riichiToggle = document.getElementById("riichiToggle");
+	const uraDoraBtn = document.getElementById("uraDoraBtn");
+	const chiPonBtn = document.getElementById("chiPonBtn");
+	const kanBtn = document.getElementById("kanBtn");
+
+	function disableUraDoraDisplay(isDisable) {
+		var uraDoraIdList = ["uraDora", "uraDora1", "uraDora2", "uraDora3", "uraDora4"];
+		const flippedTiles = document.querySelectorAll(".tile-flipped");
+
+		flippedTiles.forEach((div) => {
+			if (uraDoraIdList.includes(div.id)) {
+				if (isDisable) {
+					div.classList.remove("disabled");
+				} else {
+					div.classList.add("disabled");
+				}
+			}
+		});
+	}
+
+	riichiToggle.addEventListener("change", function () {
+		if (this.checked) {
+			disableUraDoraDisplay(true);
+
+			//todo - remove chi/pon/kan in display bar
+			uraDoraBtn.classList.remove("disabled");
+			chiPonBtn.classList.add("disabled");
+			kanBtn.classList.add("disabled");
+		} else {
+			//todo - remove all selected ura dora in second line display bar
+			disableUraDoraDisplay(false);
+
+			uraDoraBtn.classList.add("disabled");
+			chiPonBtn.classList.remove("disabled");
+			kanBtn.classList.remove("disabled");
+		}
+	});
+});
+
+//todo
+//ippatsu button event
 document.getElementById("ippatsuToggle").addEventListener("change", function () {
 	const ippatsuLabel = document.querySelector(".label-ippatsu");
 
@@ -168,16 +212,16 @@ document.getElementById("ippatsuToggle").addEventListener("change", function () 
 });
 
 //todo
-//riichi button event
-document.getElementById("riichiToggle").addEventListener("change", function () {
-	const riichiLabel = document.querySelector(".label-riichi");
+//tsumo button event
+document.getElementById("tsumoToggle").addEventListener("change", function () {
+	const tsumoLabel = document.querySelector(".label-tsumo");
 
 	if (this.checked) {
-		//riichiLabel.textContent = "Riichi On";
-		console.log("Riichi: Yes");
+		//tsumoLabel.textContent = "Tsumo On";
+		console.log("Tsumo: Yes");
 	} else {
-		//riichiLabel.textContent = "Riichi Off";
-		console.log("Riichi: No");
+		//tsumoLabel.textContent = "Tsumo Off";
+		console.log("Tsumo: No");
 	}
 });
 
@@ -265,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 
 			//todo
-			// revamp - change to click => show in upper area instead of selection
+			// revamp - change to click => show in upper display bar instead of selection
 			/*tile.addEventListener("click", function () {
 				if (this.classList.contains("selected")) {
 					this.classList.remove("selected");
@@ -299,23 +343,15 @@ function showPopupMessage(text) {
 	}, 3000);
 }
 
-/*
-//verify tile type
-function isValidType(type) {
-	return tilesTypes.includes(type);
-}
-
-//verify kaze type
-function isValidKaze(kaze) {
-	return kazeTypes.includes(kaze);
-}*/
-
 //todo
 //Calculate Button
 document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("calculateBtn").addEventListener("click", function () {
 		// todo
 		// logic to calculate the score
+		// check if riichi = true, did user choose any ura dora?
+		// check if !riichi, is there any unnecessary ura dora
+		// check !west ext = no west round
 		// if else + isTenpai();
 
 		console.log("Calculate Button clicked");
@@ -337,3 +373,15 @@ document.addEventListener("DOMContentLoaded", function () {
 		showPopupMessage("incomplete func");
 	});
 });
+
+//may useful in calculate func
+/*
+//verify tile type
+function isValidType(type) {
+	return tilesTypes.includes(type);
+}
+
+//verify kaze type
+function isValidKaze(kaze) {
+	return kazeTypes.includes(kaze);
+}*/
