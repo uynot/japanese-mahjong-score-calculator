@@ -159,9 +159,11 @@ document.getElementById("riichiToggle").addEventListener("change", function () {
 //disable ura dora options in riichi mode
 document.addEventListener("DOMContentLoaded", function () {
 	const riichiToggle = document.getElementById("riichiToggle");
+	const ippatsuToggle = document.getElementById("ippatsuToggle");
 	const uraDoraBtn = document.getElementById("uraDoraBtn");
 	const chiPonBtn = document.getElementById("chiPonBtn");
 	const kanBtn = document.getElementById("kanBtn");
+	const ippatsuSection = document.getElementById("ippatsu");
 
 	function disableUraDoraDisplay(isDisable) {
 		var uraDoraIdList = ["uraDora", "uraDora1", "uraDora2", "uraDora3", "uraDora4"];
@@ -184,13 +186,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			//todo - remove chi/pon/kan in display bar
 			uraDoraBtn.classList.remove("disabled");
+			ippatsuSection.classList.remove("disabled");
 			chiPonBtn.classList.add("disabled");
 			kanBtn.classList.add("disabled");
 		} else {
 			//todo - remove all selected ura dora in second line display bar
 			disableUraDoraDisplay(false);
+			ippatsuToggle.checked = false;
 
 			uraDoraBtn.classList.add("disabled");
+			ippatsuSection.classList.add("disabled");
 			chiPonBtn.classList.remove("disabled");
 			kanBtn.classList.remove("disabled");
 		}
@@ -329,7 +334,7 @@ function showPopupMessage(text) {
 	var popupMessage = document.getElementById("popupMessage");
 	var messageText = popupMessage.querySelector(".popupMessageText");
 
-	messageText.textContent = text || "Error occurred";
+	messageText.textContent = text || "Error occurred: text content not found";
 
 	clearTimeout(popupTimeout);
 
@@ -347,30 +352,32 @@ function showPopupMessage(text) {
 //Calculate Button
 document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("calculateBtn").addEventListener("click", function () {
+		console.log("Calculate Button clicked");
+		showPopupMessage("incomplete func");
+
 		// todo
-		// logic to calculate the score
+		// logic to calculate the score:
 		// check if riichi = true, did user choose any ura dora?
+		// check if !riichi, is ippatsu checked?, shouldn't be checked
 		// check if !riichi, is there any unnecessary ura dora
 		// check !west ext = no west round
 		// if else + isTenpai();
-
-		console.log("Calculate Button clicked");
-		showPopupMessage("incomplete func");
 	});
 
 	document.getElementById("resetBtn").addEventListener("click", function () {
-		// todo
-		// logic to reset the options
 		console.log("Reset Button clicked");
 		showPopupMessage("incomplete func");
+
+		// todo
+		// logic to reset the options
 	});
 
 	document.getElementById("helpBtn").addEventListener("click", function () {
-		// todo
-		// highlight some area and shows guideline step by step
-
 		console.log("Help Button clicked");
 		showPopupMessage("incomplete func");
+
+		// todo
+		// highlight some area and shows guideline step by step
 	});
 });
 
