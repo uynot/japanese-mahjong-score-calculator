@@ -232,7 +232,6 @@ document.getElementById("tsumoToggle").addEventListener("change", function () {
 	}
 });
 
-//todo - make generic for otherRiichi
 function triggerShakeAnimation(isHonba) {
 	if (isHonba) {
 		let honbaLabel = document.getElementById("honbaTimes");
@@ -256,6 +255,11 @@ function triggerShakeAnimation(isHonba) {
 		}, 1000);
 	}
 }
+
+//todo	rinshan event
+//todo	chankan event
+//todo	haite event
+//todo	houte event
 
 //honba & otherRiichi +- click event
 document.addEventListener("DOMContentLoaded", function () {
