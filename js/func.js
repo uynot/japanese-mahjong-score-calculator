@@ -54,7 +54,7 @@ generateBtnIcon();
 
 //switch the color of active tile type button
 //initially set one button as active
-let buttons = document.querySelectorAll(".toggle-tileType");
+const buttons = document.querySelectorAll(".toggle-tileType");
 buttons.forEach((button) => {
 	button.addEventListener("click", function () {
 		buttons.forEach((btn) => btn.classList.remove("activeTileType"));
@@ -144,6 +144,20 @@ document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("defaultPlayerWind").classList.add("activePlayerWind");
 });
 
+//reset active tile type
+function resetActiveTileType() {
+	const toggleButtons = document.querySelectorAll(".toggle-tileType");
+
+	toggleButtons.forEach((button) => {
+		button.classList.remove("activeTileType");
+	});
+
+	const defaultTileTypeButton = document.getElementById("defaultTileType");
+	if (defaultTileTypeButton) {
+		defaultTileTypeButton.classList.add("activeTileType");
+	}
+}
+
 //todo
 //riichi toggle event
 document.getElementById("riichiToggle").addEventListener("change", function () {
@@ -151,26 +165,23 @@ document.getElementById("riichiToggle").addEventListener("change", function () {
 	if (this.checked) {
 		//riichiLabel.textContent = "Riichi On";
 		console.log("Riichi: Yes");
+
+		const chiPonBtn = document.getElementById("chiPonBtn");
+		const kanBtn = document.getElementById("kanBtn");
+
+		if (chiPonBtn && chiPonBtn.classList.contains("activeTileType")) {
+			resetActiveTileType();
+		}
+		if (kanBtn && kanBtn.classList.contains("activeTileType")) {
+			resetActiveTileType();
+		}
 	} else {
 		//riichiLabel.textContent = "Riichi Off";
 		console.log("Riichi: No");
 
-		const chiPonBtn = document.querySelectorAll(".chiPonBtn");
-		const kanBtn = document.querySelectorAll(".kanBtn");
-
-		function removeActiveTileType(elements) {
-			elements.forEach((element) => {
-				if (element.classList.contains("activeTileType")) {
-					element.classList.remove("activeTileType");
-				}
-			});
-		}
-		removeActiveTileType(chiPonBtn);
-		removeActiveTileType(kanBtn);
-
-		const defaultTileType = document.querySelector(".defaultTileType");
-		if (defaultTileType) {
-			defaultTileType.classList.add("activeTileType");
+		const uraDoraBtn = document.getElementById("uraDoraBtn");
+		if (uraDoraBtn && uraDoraBtn.classList.contains("activeTileType")) {
+			resetActiveTileType();
 		}
 	}
 });
