@@ -2,6 +2,7 @@
 var popupTimeout;
 var zeroHonbaTimeout;
 var zeroOtherRiichiTimeout;
+var zeroActiveTileTypeTimeout;
 var activeTableWind = 0;
 var westEnabled = false;
 
@@ -144,11 +145,23 @@ document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("defaultPlayerWind").classList.add("activePlayerWind");
 });
 
-//reset active tile type
+//generic func to reset active tile type
 function resetActiveTileType() {
 	const toggleButtons = document.querySelectorAll(".toggle-tileType");
 
 	toggleButtons.forEach((button) => {
+		if (button.classList.contains("activeTileType")) {
+			button.classList.remove("shake");
+
+			void button.offsetWidth;
+			button.classList.add("shake");
+
+			clearTimeout(zeroActiveTileTypeTimeout);
+			zeroActiveTileTypeTimeout = setTimeout(() => {
+				button.classList.remove("shake");
+			}, 1000);
+		}
+
 		button.classList.remove("activeTileType");
 	});
 
