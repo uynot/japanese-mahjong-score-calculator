@@ -54,7 +54,7 @@ generateBtnIcon();
 
 //switch the color of active tile type button
 //initially set one button as active
-const buttons = document.querySelectorAll(".toggle-tileType");
+let buttons = document.querySelectorAll(".toggle-tileType");
 buttons.forEach((button) => {
 	button.addEventListener("click", function () {
 		buttons.forEach((btn) => btn.classList.remove("activeTileType"));
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 //todo
-//riichi button event
+//riichi toggle event
 document.getElementById("riichiToggle").addEventListener("change", function () {
 	const riichiLabel = document.querySelector(".label-riichi");
 	if (this.checked) {
@@ -154,6 +154,24 @@ document.getElementById("riichiToggle").addEventListener("change", function () {
 	} else {
 		//riichiLabel.textContent = "Riichi Off";
 		console.log("Riichi: No");
+
+		const chiPonBtn = document.querySelectorAll(".chiPonBtn");
+		const kanBtn = document.querySelectorAll(".kanBtn");
+
+		function removeActiveTileType(elements) {
+			elements.forEach((element) => {
+				if (element.classList.contains("activeTileType")) {
+					element.classList.remove("activeTileType");
+				}
+			});
+		}
+		removeActiveTileType(chiPonBtn);
+		removeActiveTileType(kanBtn);
+
+		const defaultTileType = document.querySelector(".defaultTileType");
+		if (defaultTileType) {
+			defaultTileType.classList.add("activeTileType");
+		}
 	}
 });
 
