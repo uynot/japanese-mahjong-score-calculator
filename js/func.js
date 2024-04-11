@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("defaultPlayerWind").classList.add("activePlayerWind");
 });
 
-//generic func to reset active tile type
+//generic func to reset active tile type + shake animation on toggled tile type
 function resetActiveTileType() {
 	const toggleButtons = document.querySelectorAll(".toggle-tileType");
 
