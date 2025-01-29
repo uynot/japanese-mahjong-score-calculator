@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("defaultPlayerWind").classList.add("activePlayerWind");
 });
 
-//generic func to reset active tile type
+//generic func to reset active tile type + shake animation on toggled tile type
 function resetActiveTileType() {
 	const toggleButtons = document.querySelectorAll(".toggle-tileType");
 
@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			const tile = document.createElement("div");
 			tile.classList.add("tile");
 			tile.setAttribute("data-tile-type", tileType);
-			tile.style.backgroundImage = `url('/img/light/${tileType}.svg')`;
+			tile.style.backgroundImage = `url('img/light/${tileType}.svg')`;
 			grid.appendChild(tile);
 
 			if (i === 5 && type != "character") {
@@ -410,7 +410,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				const redTile = document.createElement("div");
 				redTile.classList.add("tile");
 				redTile.setAttribute("data-tile-type", tileType);
-				redTile.style.backgroundImage = `url('/img/light/${tileType}.svg')`;
+				redTile.style.backgroundImage = `url('img/light/${tileType}.svg')`;
 				grid.appendChild(redTile);
 			}
 
