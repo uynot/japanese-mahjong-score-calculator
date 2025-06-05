@@ -15,7 +15,7 @@ button {
 
 @font-face {
 	font-family: "Kanteiryu";
-	src: url("/font/ipag.ttf") format("woff2");
+	src: url("./font/ipag.ttf") format("truetype");
 	font-weight: normal;
 	font-style: normal;
 }
